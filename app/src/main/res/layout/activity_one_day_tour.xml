@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OneDayTour">
+
+    <EditText
+        android:layout_margin="10dp"
+        android:hint="جست و جو تور ..."
+        android:fontFamily="@font/vazir"
+        android:id="@+id/see_more_search"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/image_style"
+        android:drawableRight="@drawable/ic_search_black_24dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/see_more_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="rtl"
+        android:padding="10dp"/>
+
+
+
+</LinearLayout>

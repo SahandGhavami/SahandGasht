@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/see_more_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@drawable/image_style">
+
+    <ImageView
+        android:id="@+id/see_more_image"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/image_style"
+        android:layout_margin="10dp"
+        android:src="@drawable/neyshaboor"
+        android:scaleType="centerCrop"
+        android:layout_width="130dp"
+        android:layout_height="130dp"/>
+
+    <TextView
+        android:id="@+id/see_more_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="نیشابور"
+        android:fontFamily="@font/vazir_bold"
+        android:textSize="16sp"
+        android:layout_toLeftOf="@id/see_more_image"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="5dp"
+        />
+    <TextView
+        android:id="@+id/see_more_cost_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="۵۰۰۰۰ تومان"
+        android:fontFamily="@font/vazir"
+        android:textSize="14sp"
+        android:layout_below="@id/see_more_name_tv"
+        android:layout_toLeftOf="@id/see_more_image"
+        android:layout_marginRight="5dp"
+        />
+    <TextView
+        android:id="@+id/see_more_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="۱۳۹۹/۳/۵"
+        android:fontFamily="@font/vazir"
+        android:textSize="14sp"
+        android:layout_below="@id/see_more_cost_tv"
+        android:layout_toLeftOf="@id/see_more_image"
+        android:layout_marginRight="5dp"
+        />
+    <TextView
+        android:id="@+id/see_more_number1_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ظرفیت :"
+        android:fontFamily="@font/vazir"
+        android:textSize="14sp"
+        android:layout_below="@id/see_more_date_tv"
+        android:layout_toLeftOf="@id/see_more_image"
+        android:layout_marginRight="5dp" />
+    <TextView
+        android:id="@+id/see_more_number_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="۲"
+        android:fontFamily="@font/vazir"
+        android:textSize="14sp"
+        android:layout_below="@id/see_more_date_tv"
+        android:layout_toLeftOf="@id/see_more_number1_tv"
+        android:layout_marginRight="5dp" />
+
+    <Button
+        android:id="@+id/see_more_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/reserve_button_style"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:textSize="14sp"
+        android:layout_alignParentLeft="true"
+        android:text="اطلاعات بیشتر"
+        android:textColor="#fff"
+        android:fontFamily="@font/vazir"
+        />
+
+
+</RelativeLayout>

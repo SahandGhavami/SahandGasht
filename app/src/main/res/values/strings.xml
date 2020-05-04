@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Tour</string>
+    <string name="first_page_tour">تور یک روزه</string>
+    <string name="first_page_tour_2">گشت شهری</string>
+    <string name="list_more"> لیست کامل  </string>
+    <string name="open">Tour</string>
+    <string name="Close">Tour</string>
+    <string name="sign_up">عضویت</string>
+    <string name="login">ورود</string>
+    <string name="first_page">Sahand Gasht v 1.0</string>
+
+
+</resources>
