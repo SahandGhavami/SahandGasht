@@ -23,42 +23,11 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView myrecycler;
     private List<TourDetails> tourDetailsList;
 
-    private DrawerLayout dl;
-
-    private NavigationView nv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dl = (DrawerLayout) findViewById(R.id.drawerlayout);
-
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        nv = (NavigationView) findViewById(R.id.nv);
-        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                switch (id) {
-                    case R.id.account:
-                        Toast.makeText(MainActivity.this, "My Account", Toast.LENGTH_LONG).show();
-                        break;
-                    case R.id.settings:
-                        Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_LONG).show();
-                        break;
-                    case R.id.mycart:
-                        Toast.makeText(MainActivity.this, "My Cart", Toast.LENGTH_LONG).show();
-                        break;
-                    default:return true;
-                }
-                return true;
-            }
-        });
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(toolbar);
 
         InputStream inputStream = getResources().openRawResource(R.raw.one_day_tour);
         tourDetailsList = JsonParser.parseJason(inputStream);
@@ -83,43 +52,35 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        TextView see_more3 = (TextView) findViewById(R.id.list_more_3);
+        see_more3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), OneDayTour.class);
+                startActivity(intent);
+            }
+        });
 
     }
     protected void recyclerSetting() {
         adapter = new MainPageRecyclerAdapter(this, tourDetailsList);
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        RecyclerView myList = (RecyclerView) findViewById(R.id.recycler_first_day);
+        RecyclerView myList = (RecyclerView) findViewById(R.id.offered_tour_recycler);
         myList.setLayoutManager(layoutManager);
         myList.setAdapter(adapter);
 
         LinearLayoutManager layoutManager2
                 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        RecyclerView myList2 = (RecyclerView) findViewById(R.id.recycler_gasht);
+        RecyclerView myList2 = (RecyclerView) findViewById(R.id.special_tour_recycler);
         myList2.setLayoutManager(layoutManager2);
         myList2.setAdapter(adapter);
+
+        LinearLayoutManager layoutManager3
+                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView myList3 = (RecyclerView) findViewById(R.id.oneday_tour_recycler);
+        myList3.setLayoutManager(layoutManager3);
+        myList3.setAdapter(adapter);
     }
 
-    protected void navigationClickListener() {
-        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                switch (id) {
-                    case R.id.account:
-                        Toast.makeText(MainActivity.this, "My Account", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.settings:
-                        Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.mycart:
-                        Toast.makeText(MainActivity.this, "My Cart", Toast.LENGTH_SHORT).show();
-                        break;
-                    default:return true;
-                }
-                return true;
-            }
-        });
-    }
 }

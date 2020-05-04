@@ -4,7 +4,7 @@
     app:cardCornerRadius="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="150dp"
-    android:layout_height="215dp"
+    android:layout_height="290dp"
     android:clickable="true"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -15,49 +15,93 @@
         <ImageView
             android:id="@+id/tour_image_cardview"
             android:layout_width="150dp"
-            android:layout_height="110dp" />
+            android:layout_height="140dp" />
         <TextView
             android:id="@+id/tour_name_cardview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="نام تور"
             android:textSize="14sp"
+            android:textColor="@color/darkGreen"
             android:layout_below="@id/tour_image_cardview"
             android:layout_alignParentRight="true"
-            android:fontFamily="@font/vazir"
-            android:paddingRight="5dp"/>
+            android:fontFamily="@font/iransans_fanum_bold"
+            android:paddingRight="5dp"
+            android:layout_marginRight="5dp"
+            />
+
+        <ImageView
+            android:id="@+id/cost_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:src="@drawable/money"
+            android:layout_below="@id/tour_name_cardview"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            />
         <TextView
             android:id="@+id/cost_tour_cardview"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:text="قیمت تور"
             android:textSize="14sp"
+            android:textColor="@color/darkGreen"
             android:fontFamily="@font/vazir"
             android:paddingRight="5dp"
             android:layout_below="@+id/tour_name_cardview"
-            android:layout_alignParentRight="true" />
+            android:layout_toLeftOf="@id/cost_logo"
+             />
+        <ImageView
+            android:id="@+id/date_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:src="@drawable/date"
+            android:layout_below="@id/cost_logo"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            />
         <TextView
             android:id="@+id/date_tour_cardview"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:textSize="14sp"
             android:text="تاریخ تور"
+            android:textColor="@color/darkGreen"
             android:fontFamily="@font/vazir"
             android:paddingRight="5dp"
             android:layout_below="@+id/cost_tour_cardview"
+            android:layout_toLeftOf="@id/date_logo"
+            />
+        <ImageView
+            android:id="@+id/number_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:src="@drawable/people"
+            android:layout_below="@id/date_logo"
             android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
             />
         <TextView
             android:id="@+id/number_tour_cardview"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:text="ظرفیت"
             android:textSize="14sp"
+            android:textColor="@color/darkGreen"
             android:fontFamily="@font/vazir"
             android:paddingRight="5dp"
             android:layout_below="@+id/date_tour_cardview"
-            android:layout_alignParentRight="true"
+            android:layout_toLeftOf="@id/number_logo"
             />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:layout_below="@id/number_tour_cardview"
+            android:text="@string/recycler_button"
+            android:textColor="@color/white"
+            android:background="@drawable/reserve_button_style"
+            android:fontFamily="@font/iransans_fanum_bold"/>
 
     </RelativeLayout>
 
