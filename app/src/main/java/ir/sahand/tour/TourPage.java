@@ -52,6 +52,7 @@ public class TourPage extends AppCompatActivity {
         //Toast.makeText(TourPage.this , cost , Toast.LENGTH_LONG).show();
         tv_name.setText(name);
         tv_cost.setText(cost);
+        
         tv_date.setText(date);
         tv_number.setText(number);
         image.setImageResource(photo);
