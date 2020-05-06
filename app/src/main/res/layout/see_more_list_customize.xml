@@ -1,89 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<RelativeLayout android:padding="5dp"
     android:id="@+id/see_more_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="330dp"
     android:layout_margin="5dp"
-    android:background="@drawable/image_style">
+    android:background="@drawable/image_style"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
         android:id="@+id/see_more_image"
         android:layout_alignParentRight="true"
-        android:background="@drawable/image_style"
-        android:layout_margin="10dp"
         android:src="@drawable/neyshaboor"
-        android:scaleType="centerCrop"
-        android:layout_width="130dp"
-        android:layout_height="130dp"/>
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"/>
 
     <TextView
-        android:id="@+id/see_more_name_tv"
+        android:id="@+id/see_more_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="نیشابور"
-        android:fontFamily="@font/vazir_bold"
-        android:textSize="16sp"
-        android:layout_toLeftOf="@id/see_more_image"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/see_more_image"
+        android:text="@string/one_day_tour"
+        android:fontFamily="@font/iransans_fanum_bold"
+        android:textSize="18sp"
+        android:textColor="@color/darkGreen"/>
+
+    <ImageView
+        android:id="@+id/see_more_money_logo"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/money"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/see_more_title"/>
+
+    <TextView
+        android:id="@+id/see_more_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/see_more_title"
+        android:text="25000"
+        android:textColor="@color/darkGreen"
         android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@id/see_more_money_logo"
+        android:fontFamily="@font/iransansweb_fanum_light"
         />
-    <TextView
-        android:id="@+id/see_more_cost_tv"
+
+    <ImageView
+        android:id="@+id/see_more_date_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="۵۰۰۰۰ تومان"
-        android:fontFamily="@font/vazir"
-        android:textSize="14sp"
-        android:layout_below="@id/see_more_name_tv"
-        android:layout_toLeftOf="@id/see_more_image"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/see_more_money_logo"
+        android:src="@drawable/date"
+        android:layout_marginTop="6dp"
+        />
+
+    <TextView
+        android:id="@+id/see_more_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/see_more_money_logo"
+        android:layout_toLeftOf="@id/see_more_date_logo"
+        android:text="@string/one_day_tour"
+        android:layout_marginTop="6dp"
         android:layout_marginRight="5dp"
+        android:fontFamily="@font/iransansweb_fanum_light"
+        android:textColor="@color/darkGreen"
         />
-    <TextView
-        android:id="@+id/see_more_date_tv"
+
+    <ImageView
+        android:id="@+id/see_more_people_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="۱۳۹۹/۳/۵"
-        android:fontFamily="@font/vazir"
-        android:textSize="14sp"
-        android:layout_below="@id/see_more_cost_tv"
-        android:layout_toLeftOf="@id/see_more_image"
+        android:src="@drawable/people"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/see_more_date"
+        android:layout_marginTop="6dp"/>
+
+    <TextView
+        android:id="@+id/see_more_people"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/see_more_date_logo"
+        android:layout_toLeftOf="@id/see_more_people_logo"
+        android:text="@string/one_day_tour"
+        android:layout_marginTop="6dp"
         android:layout_marginRight="5dp"
-        />
-    <TextView
-        android:id="@+id/see_more_number1_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ظرفیت :"
-        android:fontFamily="@font/vazir"
-        android:textSize="14sp"
-        android:layout_below="@id/see_more_date_tv"
-        android:layout_toLeftOf="@id/see_more_image"
-        android:layout_marginRight="5dp" />
-    <TextView
-        android:id="@+id/see_more_number_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="۲"
-        android:fontFamily="@font/vazir"
-        android:textSize="14sp"
-        android:layout_below="@id/see_more_date_tv"
-        android:layout_toLeftOf="@id/see_more_number1_tv"
-        android:layout_marginRight="5dp" />
+        android:fontFamily="@font/iransansweb_fanum_light"
+        android:textColor="@color/darkGreen"/>
 
     <Button
         android:id="@+id/see_more_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
         android:background="@drawable/reserve_button_style"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:textSize="14sp"
-        android:layout_alignParentLeft="true"
-        android:text="اطلاعات بیشتر"
-        android:textColor="#fff"
-        android:fontFamily="@font/vazir"
+        android:layout_margin="5dp"
+        android:text="@string/recycler_button"
+        android:fontFamily="@font/iransans_fanum_bold"
+        android:textColor="@color/white"
         />
 
 

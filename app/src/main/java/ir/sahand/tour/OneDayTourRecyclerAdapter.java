@@ -88,10 +88,10 @@ public class OneDayTourRecyclerAdapter extends RecyclerView.Adapter<OneDayTourRe
                 public MyViewHolder(View itemView) {
                     super(itemView);
                     relativeLayout = (RelativeLayout) itemView.findViewById(R.id.see_more_layout);
-                    tour_name = (TextView) itemView.findViewById(R.id.see_more_name_tv);
-                    tour_cost = (TextView) itemView.findViewById(R.id.see_more_cost_tv);
-                    tour_date = (TextView) itemView.findViewById(R.id.see_more_date_tv);
-                    tour_number = (TextView) itemView.findViewById(R.id.see_more_number_tv);
+                    tour_name = (TextView) itemView.findViewById(R.id.see_more_title);
+                    tour_cost = (TextView) itemView.findViewById(R.id.see_more_cost);
+                    tour_date = (TextView) itemView.findViewById(R.id.see_more_date);
+                    tour_number = (TextView) itemView.findViewById(R.id.see_more_people);
                     tour_img = (ImageView) itemView.findViewById(R.id.see_more_image);
                     more_details = (Button) itemView.findViewById(R.id.see_more_button);
                 }

@@ -13,7 +13,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="265dp"
+            android:layout_height="268dp"
             android:src="@drawable/background_home_page_edit"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="370dp"
             android:background="@drawable/layout_style"
-            android:layout_marginTop="265dp"
+            android:layout_marginTop="270dp"
             android:orientation="horizontal">
             <RelativeLayout
                 android:layout_width="match_parent"
