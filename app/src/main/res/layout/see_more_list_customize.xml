@@ -11,7 +11,6 @@
     <ImageView
         android:id="@+id/see_more_image"
         android:layout_alignParentRight="true"
-        android:src="@drawable/neyshaboor"
         android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="150dp"/>

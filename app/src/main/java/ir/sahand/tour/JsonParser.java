@@ -9,6 +9,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import ir.sahand.tour.model.TourDetails;
+
 public class JsonParser {
     public static List<TourDetails> parseJason(InputStream input){
         String content = Utils.ConvertInputStreamToString(input);

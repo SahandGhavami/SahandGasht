@@ -1,18 +1,58 @@
-package ir.sahand.tour;
+package ir.sahand.tour.model;
 
-public class TourDetails {
-    private static String tour_photo;
+import com.google.gson.annotations.SerializedName;
+
+public class  TourDetails {
+    @SerializedName("id")
+    private int id;
+    @SerializedName("image")
+    private String tour_photo;
+    @SerializedName("name")
     private String tour_name;
+    @SerializedName("cost")
     private String tour_cost;
+    @SerializedName("date")
     private String tour_date;
-    //private String tour_photo;
+    @SerializedName("capacity")
     private String tour_number;
+    @SerializedName("details")
     private String tour_details;
+    @SerializedName("description")
     private String tour_description;
-    private String tour_gallery;
+    @SerializedName("category")
     private String tour_category;
+    @SerializedName("location")
     private String tour_location;
+    @SerializedName("reserved_number")
     private String tour_reserved_number;
+
+    public TourDetails(String tour_name, String tour_cost, String tour_date, String tour_photo , String tour_number , String tour_description , String tour_details , String tour_gallery ) {
+        this.tour_name = tour_name;
+        this.tour_cost = tour_cost;
+        this.tour_date = tour_date;
+        this.tour_photo = tour_photo;
+        this.tour_number = tour_number;
+        this.tour_description=tour_description;
+        this.tour_details=tour_details;
+    }
+
+    public TourDetails(String tour_name, String tour_cost, String tour_date, String tour_photo , String tour_number ) {
+        this.tour_name = tour_name;
+        this.tour_cost = tour_cost;
+        this.tour_date = tour_date;
+        this.tour_photo = tour_photo;
+        this.tour_number = tour_number;
+    }
+
+    public TourDetails (){}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTour_details() {
         return tour_details;
@@ -30,34 +70,6 @@ public class TourDetails {
         this.tour_description = tour_description;
     }
 
-    public String getTour_gallery() {
-        return tour_gallery;
-    }
-
-    public void setTour_gallery(String tour_gallery) {
-        this.tour_gallery = tour_gallery;
-    }
-
-    public TourDetails(String tour_name, String tour_cost, String tour_date, String tour_photo , String tour_number , String tour_description , String tour_details , String tour_gallery ) {
-        this.tour_name = tour_name;
-        this.tour_cost = tour_cost;
-        this.tour_date = tour_date;
-        this.tour_photo = tour_photo;
-        this.tour_number = tour_number;
-        this.tour_description=tour_description;
-        this.tour_details=tour_details;
-        this.tour_gallery=tour_gallery;
-    }
-
-    public TourDetails(String tour_name, String tour_cost, String tour_date, String tour_photo , String tour_number ) {
-        this.tour_name = tour_name;
-        this.tour_cost = tour_cost;
-        this.tour_date = tour_date;
-        this.tour_photo = tour_photo;
-        this.tour_number = tour_number;
-    }
-
-    public TourDetails (){}
     public String getTour_number() {
         return tour_number;
     }
@@ -90,7 +102,7 @@ public class TourDetails {
         this.tour_date = tour_date;
     }
 
-    public static String getTour_photo() {
+    public String getTour_photo() {
         return tour_photo;
     }
 

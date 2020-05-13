@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="260dp"
             android:scaleType="fitXY"
-            android:src="@drawable/shiraz"/>
+            />
 
         <RelativeLayout
             android:layout_gravity="center_vertical"
@@ -39,8 +39,8 @@
             android:layout_width="175dp"
             android:layout_height="27dp"
             android:background="@drawable/textview_style"
-            android:text="  ماسال ، گیلان"
             android:fontFamily="@font/iransansweb_fanum_medium"
+            android:gravity="center_vertical"
             android:textColor="@color/darkGreen"
             android:drawableRight="@drawable/location"
             android:layout_below="@id/tour_activity_name"
@@ -53,7 +53,7 @@
             android:layout_width="175dp"
             android:layout_height="27dp"
             android:background="@drawable/textview_style_dark"
-            android:text="  ماسال ، گیلان"
+            android:gravity="center_vertical"
             android:fontFamily="@font/iransansweb_fanum_medium"
             android:textColor="@color/white"
             android:layout_below="@id/tour_activity_name"
@@ -66,6 +66,7 @@
             android:layout_height="27dp"
             android:background="@drawable/textview_style"
             android:text="  ماسال ، گیلان"
+            android:gravity="center_vertical"
             android:drawableRight="@drawable/money"
             android:fontFamily="@font/iransansweb_fanum_medium"
             android:textColor="@color/darkGreen"
@@ -80,6 +81,7 @@
             android:background="@drawable/textview_style"
             android:text="  ماسال ، گیلان"
             android:drawableRight="@drawable/date"
+            android:gravity="center_vertical"
             android:fontFamily="@font/iransansweb_fanum_medium"
             android:textColor="@color/darkGreen"
             android:layout_below="@id/tour_activity_number"

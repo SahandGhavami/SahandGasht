@@ -1,4 +1,4 @@
-package ir.sahand.tour;
+package ir.sahand.tour.adapter;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;

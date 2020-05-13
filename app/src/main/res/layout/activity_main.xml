@@ -65,8 +65,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
+                    android:id="@+id/offered_tour_tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
                     android:text="@string/offered_tour"
                     android:textSize="20sp"
                     android:fontFamily="@font/iransans_fanum_bold"
@@ -78,7 +80,8 @@
                 <TextView
                     android:id="@+id/list_more"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
                     android:text="@string/list_more"
                     android:textSize="15sp"
                     android:fontFamily="@font/iransans_fanum_bold"
@@ -116,10 +119,11 @@
                     android:layout_marginTop="10dp"
                     />
                 <TextView
+                    android:id="@+id/special_tour_tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:text="@string/special_tour"
-                    android:gravity="center"
+                    android:gravity="center_vertical"
                     android:textSize="20sp"
                     android:fontFamily="@font/iransans_fanum_bold"
                     android:textColor="@color/darkGreen"
@@ -130,7 +134,8 @@
                 <TextView
                     android:id="@+id/list_more_2"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
                     android:text="@string/list_more"
                     android:textSize="15sp"
                     android:fontFamily="@font/iransans_fanum_bold"
@@ -162,8 +167,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
+                    android:id="@+id/one_day_tour_tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
                     android:text="@string/one_day_tour"
                     android:textSize="20sp"
                     android:fontFamily="@font/iransans_fanum_bold"
@@ -175,7 +182,8 @@
                 <TextView
                     android:id="@+id/list_more_3"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
                     android:text="@string/list_more"
                     android:textSize="15sp"
                     android:fontFamily="@font/iransans_fanum_bold"

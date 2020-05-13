@@ -1,30 +1,31 @@
-package ir.sahand.tour;
+package ir.sahand.tour.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
+
+import ir.sahand.tour.R;
+import ir.sahand.tour.model.TourDetails;
+import ir.sahand.tour.TourPage;
 
 public class MainPageRecyclerAdapter extends RecyclerView.Adapter<MainPageRecyclerAdapter.MyViewHolder> {
     Context mContext;
     List<TourDetails> tourDetailsList;
 
-    public MainPageRecyclerAdapter(Context mContext, List<TourDetails> tourDetailsList) {
+    public MainPageRecyclerAdapter(Context mContext, List<TourDetails> tours) {
         this.mContext = mContext;
-        this.tourDetailsList = tourDetailsList;
+        this.tourDetailsList = tours;
     }
 
     @NonNull
@@ -40,17 +41,15 @@ public class MainPageRecyclerAdapter extends RecyclerView.Adapter<MainPageRecycl
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder,final int position) {
         holder.tour_name.setText(tourDetailsList.get(position).getTour_name());
-        holder.tour_cost.setText(tourDetailsList.get(position).getTour_cost());
+        holder.tour_cost.setText(tourDetailsList.get(position).getTour_cost() +" تومان");
         holder.tour_date.setText(tourDetailsList.get(position).getTour_date());
-        holder.tour_number.setText(tourDetailsList.get(position).getTour_number());
-        //holder.tour_img.setImageResource(tourDetailsList.get(position).getTour_photo());
-        String photoName = TourDetails.getTour_photo();
-        //--TODO image doesn't working
-        if(photoName.contains(".")){
-            photoName=photoName.substring(0 , photoName.lastIndexOf("."));
-        }
-        int imgResId = mContext.getResources().getIdentifier( photoName ," drawable" , mContext.getApplicationContext().getPackageName());
-        holder.tour_img.setImageResource(imgResId);
+        holder.tour_number.setText(tourDetailsList.get(position).getTour_number()+" نفر");
+        String photo_url = tourDetailsList.get(position).getTour_photo();
+        Glide
+                .with(mContext)
+                .load(photo_url)
+                .into(holder.tour_img);
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -59,16 +58,12 @@ public class MainPageRecyclerAdapter extends RecyclerView.Adapter<MainPageRecycl
                 intent.putExtra("Tour_name" , tourDetailsList.get(position).getTour_name());
                 intent.putExtra("Tour_cost" , tourDetailsList.get(position).getTour_cost());
                 intent.putExtra("Tour_date" , tourDetailsList.get(position).getTour_date());
-                intent.putExtra("Tour_Photo" , tourDetailsList.get(position).getTour_photo());
-                intent.putExtra("Tour_Number" , tourDetailsList.get(position).getTour_number());
+                intent.putExtra("Tour_Photo" ,tourDetailsList.get(position).getTour_photo());
+                intent.putExtra("Tour_Reserved_Number" , tourDetailsList.get(position).getTour_reserved_number());
                 intent.putExtra("Tour_description" ,  tourDetailsList.get(position).getTour_description());
                 intent.putExtra("Tour_details" , tourDetailsList.get(position).getTour_details());
+                intent.putExtra("Tour_location" , tourDetailsList.get(position).getTour_location());
                 mContext.startActivity(intent);
-                /*AboutTourFragment aboutTourFragment = new AboutTourFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("Tour_description" , tourDetailsList.get(position).getTour_description());
-                bundle.putString("Tour_details" , tourDetailsList.get(position).getTour_details());
-                aboutTourFragment.setArguments(bundle);*/
             }
         });
 
@@ -76,7 +71,7 @@ public class MainPageRecyclerAdapter extends RecyclerView.Adapter<MainPageRecycl
 
     @Override
     public int getItemCount() {
-        return tourDetailsList.size();
+        return tourDetailsList == null ? 0 : tourDetailsList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

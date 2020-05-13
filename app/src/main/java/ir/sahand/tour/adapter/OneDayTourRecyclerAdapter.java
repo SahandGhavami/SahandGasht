@@ -1,4 +1,4 @@
-package ir.sahand.tour;
+package ir.sahand.tour.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,14 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.bumptech.glide.Glide;
+
 import java.util.List;
+
+import ir.sahand.tour.R;
+import ir.sahand.tour.model.TourDetails;
+import ir.sahand.tour.TourPage;
 
 public class OneDayTourRecyclerAdapter extends RecyclerView.Adapter<OneDayTourRecyclerAdapter.MyViewHolder> {
     Context mContext;
@@ -43,14 +46,12 @@ public class OneDayTourRecyclerAdapter extends RecyclerView.Adapter<OneDayTourRe
         holder.tour_name.setText(tourDetailsList.get(position).getTour_name());
         holder.tour_cost.setText(tourDetailsList.get(position).getTour_cost());
         holder.tour_date.setText(tourDetailsList.get(position).getTour_date());
-        holder.tour_number.setText(tourDetailsList.get(position).getTour_number());
-        String photoName = TourDetails.getTour_photo();
-        //--TODO image doesn't working
-        if (photoName.contains(".")) {
-            photoName = photoName.substring(0, photoName.lastIndexOf("."));
-        }
-        int imgResId = mContext.getResources().getIdentifier(photoName, " drawable", mContext.getApplicationContext().getPackageName());
-        //holder.tour_img.setImageResource(imgResId);
+        holder.tour_reserved_number.setText(tourDetailsList.get(position).getTour_number());
+        String photo_url = tourDetailsList.get(position).getTour_photo();
+        Glide
+                .with(mContext)
+                .load(photo_url)
+                .into(holder.tour_img);
         holder.more_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,9 +60,10 @@ public class OneDayTourRecyclerAdapter extends RecyclerView.Adapter<OneDayTourRe
                 intent.putExtra("Tour_cost", tourDetailsList.get(position).getTour_cost());
                 intent.putExtra("Tour_date", tourDetailsList.get(position).getTour_date());
                 intent.putExtra("Tour_Photo", tourDetailsList.get(position).getTour_photo());
-                intent.putExtra("Tour_Number", tourDetailsList.get(position).getTour_number());
+                intent.putExtra("Tour_Reserved_Number", tourDetailsList.get(position).getTour_reserved_number());
                 intent.putExtra("Tour_description", tourDetailsList.get(position).getTour_description());
                 intent.putExtra("Tour_details", tourDetailsList.get(position).getTour_details());
+                intent.putExtra("Tour_location",tourDetailsList.get(position).getTour_location());
                 mContext.startActivity(intent);
             }
         });
@@ -81,7 +83,8 @@ public class OneDayTourRecyclerAdapter extends RecyclerView.Adapter<OneDayTourRe
                 private TextView tour_name;
                 private TextView tour_cost;
                 private TextView tour_date;
-                private TextView tour_number;
+                private TextView tour_reserved_number;
+                //private TextView tour_location;
                 private ImageView tour_img;
                 private Button more_details;
 
@@ -91,8 +94,9 @@ public class OneDayTourRecyclerAdapter extends RecyclerView.Adapter<OneDayTourRe
                     tour_name = (TextView) itemView.findViewById(R.id.see_more_title);
                     tour_cost = (TextView) itemView.findViewById(R.id.see_more_cost);
                     tour_date = (TextView) itemView.findViewById(R.id.see_more_date);
-                    tour_number = (TextView) itemView.findViewById(R.id.see_more_people);
+                    tour_reserved_number = (TextView) itemView.findViewById(R.id.see_more_people);
                     tour_img = (ImageView) itemView.findViewById(R.id.see_more_image);
+                    //tour_location=(TextView) itemView.findViewById(R.id.tour_activity_location);
                     more_details = (Button) itemView.findViewById(R.id.see_more_button);
                 }
             }
