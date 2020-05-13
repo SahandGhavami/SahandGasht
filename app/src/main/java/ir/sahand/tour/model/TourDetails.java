@@ -10,6 +10,9 @@ public class TourDetails {
     private String tour_details;
     private String tour_description;
     private String tour_gallery;
+    private String tour_category;
+    private String tour_location;
+    private String tour_reserved_number;
 
     public String getTour_details() {
         return tour_details;
@@ -53,8 +56,8 @@ public class TourDetails {
         this.tour_photo = tour_photo;
         this.tour_number = tour_number;
     }
-    public TourDetails (){}
 
+    public TourDetails (){}
     public String getTour_number() {
         return tour_number;
     }
@@ -93,5 +96,29 @@ public class TourDetails {
 
     public void setTour_photo(String tour_photo) {
         this.tour_photo = tour_photo;
+    }
+
+    public String getTour_category() {
+        return tour_category;
+    }
+
+    public void setTour_category(String tour_category) {
+        this.tour_category = tour_category;
+    }
+
+    public String getTour_location() {
+        return tour_location;
+    }
+
+    public void setTour_location(String tour_location) {
+        this.tour_location = tour_location;
+    }
+
+    public String getTour_reserved_number() {
+        return tour_reserved_number;
+    }
+
+    public void setTour_reserved_number(String tour_reserved_number) {
+        this.tour_reserved_number = tour_reserved_number;
     }
 }
