@@ -20,13 +20,13 @@ import ir.sahand.tour.R;
 import ir.sahand.tour.model.TourDetails;
 import ir.sahand.tour.TourPage;
 
-public class OneDayTourRecyclerAdapter extends RecyclerView.Adapter<OneDayTourRecyclerAdapter.MyViewHolder> {
+public class SeeMoreRecyclerAdapter extends RecyclerView.Adapter<SeeMoreRecyclerAdapter.MyViewHolder> {
     Context mContext;
     List<TourDetails> tourDetailsList;
     List<TourDetails> tourDetailsListFiltered;
 
 
-    public OneDayTourRecyclerAdapter(Context mContext, List<TourDetails> tourDetailsList) {
+    public SeeMoreRecyclerAdapter(Context mContext, List<TourDetails> tourDetailsList) {
         this.mContext = mContext;
         this.tourDetailsList = tourDetailsList;
     }
@@ -36,7 +36,7 @@ public class OneDayTourRecyclerAdapter extends RecyclerView.Adapter<OneDayTourRe
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
         v = LayoutInflater.from(mContext).inflate(R.layout.see_more_list_customize, parent, false);
-        OneDayTourRecyclerAdapter.MyViewHolder vHolder = new OneDayTourRecyclerAdapter.MyViewHolder(v);
+        SeeMoreRecyclerAdapter.MyViewHolder vHolder = new SeeMoreRecyclerAdapter.MyViewHolder(v);
 
         return vHolder;
     }
@@ -44,9 +44,9 @@ public class OneDayTourRecyclerAdapter extends RecyclerView.Adapter<OneDayTourRe
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.tour_name.setText(tourDetailsList.get(position).getTour_name());
-        holder.tour_cost.setText(tourDetailsList.get(position).getTour_cost());
+        holder.tour_cost.setText(tourDetailsList.get(position).getTour_cost()+" تومان");
         holder.tour_date.setText(tourDetailsList.get(position).getTour_date());
-        holder.tour_reserved_number.setText(tourDetailsList.get(position).getTour_number());
+        holder.tour_reserved_number.setText(tourDetailsList.get(position).getTour_number()+" نفر رزرو کرده‌");
         String photo_url = tourDetailsList.get(position).getTour_photo();
         Glide
                 .with(mContext)

@@ -1,162 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="match_parent">
+    <ImageButton
+        android:id="@+id/making_tour_activity_image"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:scaleType="fitXY" />
+
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="230dp"
+        android:background="@drawable/layout_style"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ImageView
-            android:id="@+id/tour_activity_image"
-            android:layout_width="match_parent"
-            android:layout_height="260dp"
-            android:scaleType="fitXY"
-            />
-        <ImageView
-            android:id="@+id/back_button_tourpage"
-            android:src="@drawable/ic_arrow_back"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"/>
 
-        <RelativeLayout
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="230dp"
-            android:background="@drawable/layout_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/tour_activity_name"
+        <EditText
+            android:id="@+id/making_tour_activity_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="تور یک روزه ماسال"
+            android:hint=" تور یک روزه ماسال"
             android:textColor="@color/darkGreen"
+            android:background="@android:color/transparent"
             android:fontFamily="@font/iransans_fanum_bold"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="10dp"/>
-        <TextView
-            android:id="@+id/tour_activity_location"
+
+        <EditText
+            android:id="@+id/making_tour_activity_location"
             android:layout_width="175dp"
             android:layout_height="27dp"
             android:background="@drawable/textview_style"
             android:fontFamily="@font/iransansweb_fanum_medium"
-            android:gravity="center_vertical"
+            android:hint="موقعیت مکانی"
+            android:gravity="center|bottom"
             android:textColor="@color/darkGreen"
             android:drawableRight="@drawable/location"
-            android:layout_below="@id/tour_activity_name"
+            android:layout_below="@id/making_tour_activity_name"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="10dp" />
 
-        <TextView
-            android:id="@+id/tour_activity_number"
+        <EditText
+            android:id="@+id/making_tour_activity_number"
             android:layout_width="175dp"
             android:layout_height="27dp"
             android:background="@drawable/textview_style_dark"
-            android:gravity="center_vertical"
+            android:gravity="center|bottom"
             android:fontFamily="@font/iransansweb_fanum_medium"
             android:textColor="@color/white"
-            android:layout_below="@id/tour_activity_name"
+            android:hint="ظرفیت تور"
+            android:layout_below="@id/making_tour_activity_name"
             android:layout_alignParentStart="true"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp" />
-        <TextView
-            android:id="@+id/tour_activity_cost"
+
+        <EditText
+            android:id="@+id/making_tour_activity_cost"
             android:layout_width="175dp"
             android:layout_height="27dp"
             android:background="@drawable/textview_style"
-            android:text="  ماسال ، گیلان"
-            android:gravity="center_vertical"
+            android:hint="قیمت تور"
+            android:gravity="center|bottom"
             android:drawableRight="@drawable/money"
             android:fontFamily="@font/iransansweb_fanum_medium"
             android:textColor="@color/darkGreen"
-            android:layout_below="@id/tour_activity_location"
+            android:layout_below="@id/making_tour_activity_location"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="10dp" />
-        <TextView
-            android:id="@+id/tour_activity_date"
+
+        <EditText
+            android:id="@+id/making_tour_activity_date"
             android:layout_width="175dp"
             android:layout_height="27dp"
             android:background="@drawable/textview_style"
-            android:text="  ماسال ، گیلان"
+            android:hint="تاریخ تور"
             android:drawableRight="@drawable/date"
-            android:gravity="center_vertical"
+            android:gravity="center|bottom"
             android:fontFamily="@font/iransansweb_fanum_medium"
             android:textColor="@color/darkGreen"
-            android:layout_below="@id/tour_activity_number"
+            android:layout_below="@id/making_tour_activity_number"
             android:layout_alignParentStart="true"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp" />
 
         <TextView
-            android:id="@+id/tour_activity_details_title"
+            android:id="@+id/making_tour_activity_details_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tour_details"
             android:fontFamily="@font/iransansweb_fanum_medium"
             android:textSize="20sp"
             android:textColor="@color/darkGreen"
-            android:layout_below="@id/tour_activity_cost"
+            android:layout_below="@id/making_tour_activity_cost"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="15dp"
             android:layout_marginTop="15dp"
             />
 
-        <TextView
-            android:id="@+id/tour_activity_details"
+        <EditText
+            android:id="@+id/making_tour_activity_details"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="60dp"
+            android:lines="10"
             android:scrollbars="vertical"
-            android:text="@string/tour_details"
+            android:hint="جزئیات تور"
             android:fontFamily="@font/iransansweb_fanum_medium"
+            android:background="@android:color/transparent"
             android:textSize="15sp"
             android:textColor="@color/darkGreen"
-            android:layout_below="@id/tour_activity_details_title"
+            android:layout_below="@id/making_tour_activity_details_title"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
             android:paddingEnd="10dp"
             />
         <Button
-            android:id="@+id/tour_activity_button"
+            android:id="@+id/making_tour_activity_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/reserve_button_style"
             android:layout_margin="15dp"
-            android:layout_below="@+id/tour_activity_details"
-            android:text="@string/reserve_button"
+            android:layout_below="@+id/making_tour_activity_details"
+            android:text="@string/making_tour"
             android:textColor="@color/white"
             android:fontFamily="@font/iransans_fanum_bold"
             android:textSize="25sp"/>
-        <TextView
-            android:id="@+id/same"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/same_tour"
-            android:textColor="@color/darkGreen"
-            android:textSize="20sp"
-            android:fontFamily="@font/iransansweb_fanum_medium"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@id/tour_activity_button"
-            android:layout_marginEnd="15dp"
-            android:layout_marginTop="10dp"
-            />
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/tour_activity_recycler"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/same"
-                android:layoutDirection="rtl"
-                android:layout_marginStart="15dp"/>
-
-        </RelativeLayout>
 
     </RelativeLayout>
-</ScrollView>
+
+</RelativeLayout>

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.method.ScrollingMovementMethod;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ public class TourPage extends AppCompatActivity {
     private TextView tv_number;
     private TextView tv_details;
     private TextView tv_location;
+    private ImageView back_btn;
     private MainPageRecyclerAdapter adapter;
     private RecyclerView myrecycler;
     private List<TourDetails> tourDetailsList;
@@ -46,42 +48,21 @@ public class TourPage extends AppCompatActivity {
         setContentView(R.layout.tour_activity);
 
         toursRequest();
-
-        tv_name = (TextView) findViewById (R.id.tour_activity_name);
-        tv_cost = (TextView) findViewById (R.id.tour_activity_cost);
-        tv_date = (TextView) findViewById (R.id.tour_activity_date);
-        image = (ImageView) findViewById(R.id.tour_activity_image);
-        tv_number = (TextView) findViewById(R.id.tour_activity_number);
-        tv_details = (TextView) findViewById(R.id.tour_activity_details);
-        tv_location= (TextView) findViewById(R.id.tour_activity_location);
-
-
-
         Bundle bundle= getIntent().getExtras();
-        String name = bundle.getString("Tour_name");
-        String cost = bundle.getString("Tour_cost");
-        String date = bundle.getString("Tour_date");
-        String reserved_number = bundle.getString("Tour_Reserved_Number");
-        String description = bundle.getString("Tour_description");
-        String location = bundle.getString("Tour_location");
-        String photo = bundle.getString("Tour_Photo");
-        Glide
-                .with(this)
-                .load(photo)
-                .into(image);
+        setData(bundle);
+        back_btn=(ImageView) findViewById (R.id.back_button_tourpage);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
-        tv_name.setText(name);
-        tv_cost.setText(cost + " تومان");
-        tv_details.setText(description);
-        tv_details.setMovementMethod(new ScrollingMovementMethod());
-        tv_date.setText(date);
-        tv_number.setText("ظرفیت باقی مانده :"+ reserved_number +" نفر");
-        tv_location.setText(location);
 
     }
     private void toursRequest(){
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
-        Call<TourResponse> call = apiInterface.getTour();
+        Call<TourResponse> call = apiInterface.getTour("");
         call.enqueue(new Callback<TourResponse>() {
             @Override
             public void onResponse(Call<TourResponse> call, Response<TourResponse> response) {
@@ -106,6 +87,37 @@ public class TourPage extends AppCompatActivity {
         RecyclerView myList = (RecyclerView) findViewById(R.id.tour_activity_recycler);
         myList.setLayoutManager(layoutManager);
         myList.setAdapter(adapter);
+    }
+    private void setData(Bundle bundle){
+        tv_name = (TextView) findViewById (R.id.tour_activity_name);
+        tv_cost = (TextView) findViewById (R.id.tour_activity_cost);
+        tv_date = (TextView) findViewById (R.id.tour_activity_date);
+        image = (ImageView) findViewById(R.id.tour_activity_image);
+        tv_number = (TextView) findViewById(R.id.tour_activity_number);
+        tv_details = (TextView) findViewById(R.id.tour_activity_details);
+        tv_location= (TextView) findViewById(R.id.tour_activity_location);
+
+        String name = bundle.getString("Tour_name");
+        String cost = bundle.getString("Tour_cost");
+        String date = bundle.getString("Tour_date");
+        String reserved_number = bundle.getString("Tour_Reserved_Number");
+        String description = bundle.getString("Tour_description");
+        String location = bundle.getString("Tour_location");
+        String photo = bundle.getString("Tour_Photo");
+        Glide
+                .with(this)
+                .load(photo)
+                .into(image);
+
+        tv_name.setText(name);
+        tv_cost.setText(cost + " تومان");
+        tv_details.setText(description);
+        tv_details.setMovementMethod(new ScrollingMovementMethod());
+        tv_date.setText(date);
+        tv_number.setText("ظرفیت باقی مانده :"+ reserved_number +" نفر");
+        tv_location.setText(location);
+
+
     }
 
 }

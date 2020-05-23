@@ -5,13 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 import ir.sahand.tour.adapter.MainPageRecyclerAdapter;
@@ -31,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView offered_tv ;
     private TextView special_tv;
     private TextView one_day_tv;
+    private List<TourDetails> tours;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +38,14 @@ public class MainActivity extends AppCompatActivity {
 
         //InputStream inputStream = getResources().openRawResource(R.raw.one_day_tour);
         //tourDetailsList = JsonParser.parseJason(inputStream);
-
-        toursRequest();
+        //recyclerSetting(tours);
+        toursRequest("");
         //Toast.makeText(MainActivity.this , "JsonParser : Returned" + tourDetailsList.size() + "items" , Toast.LENGTH_SHORT).show();
         TextView see_more = (TextView) findViewById(R.id.list_more);
         see_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), OneDayTour.class);
+                Intent intent = new Intent(getApplicationContext(), SeeMore.class);
                 offered_tv = (TextView) findViewById(R.id.offered_tour_tv);
                 String text= (String) offered_tv.getText();
                 intent.putExtra("Tour_category" , text);
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         see_more2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), OneDayTour.class);
+                Intent intent = new Intent(getApplicationContext(), SeeMore.class);
                 special_tv= (TextView) findViewById(R.id.special_tour_tv);
                 String text= (String) special_tv.getText();
                 intent.putExtra("Tour_category" , text);
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         see_more3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), OneDayTour.class);
+                Intent intent = new Intent(getApplicationContext(), SeeMore.class);
                 one_day_tv= (TextView) findViewById(R.id.one_day_tour_tv);
                 String text= (String) one_day_tv.getText();
                 intent.putExtra("Tour_category" , text);
@@ -77,14 +76,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    private void toursRequest(){
+    private void toursRequest(String key){
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
-        Call<TourResponse> call = apiInterface.getTour();
+        Call<TourResponse> call = apiInterface.getTour(key);
         call.enqueue(new Callback<TourResponse>() {
             @Override
             public void onResponse(Call<TourResponse> call, Response<TourResponse> response) {
                 if(response.isSuccessful()){
-                    List<TourDetails> tours = response.body().getTours();
+                    tours = response.body().getTours();
                     recyclerSetting(tours);
                 }
             }
