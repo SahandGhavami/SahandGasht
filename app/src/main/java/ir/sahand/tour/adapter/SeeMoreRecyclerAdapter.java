@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import ir.sahand.tour.R;
+import ir.sahand.tour.Utils;
 import ir.sahand.tour.model.TourDetails;
 import ir.sahand.tour.TourPage;
 
@@ -44,8 +45,10 @@ public class SeeMoreRecyclerAdapter extends RecyclerView.Adapter<SeeMoreRecycler
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.tour_name.setText(tourDetailsList.get(position).getTour_name());
-        holder.tour_cost.setText(tourDetailsList.get(position).getTour_cost()+" تومان");
-        holder.tour_date.setText(tourDetailsList.get(position).getTour_date());
+        holder.tour_cost.setText(Utils.formatMoney(tourDetailsList.get(position).getTour_cost())
+        );
+        holder.tour_date.setText(Utils.convertTimestampToHumanReadableString(tourDetailsList.get(position).getTour_date())
+        );
         holder.tour_reserved_number.setText(tourDetailsList.get(position).getTour_number()+" نفر رزرو کرده‌");
         String photo_url = tourDetailsList.get(position).getTour_photo();
         Glide

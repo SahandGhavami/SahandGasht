@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_welcome_page">
+
+
+    <ImageView
+        android:id="@+id/signup_page_logo"
+        android:layout_width="200dp"
+        android:layout_height="175dp"
+        android:src="@drawable/logo"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="80dp"
+        android:layout_above="@id/signup_email_insert" />
+
+    <EditText
+        android:id="@+id/signup_email_insert"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_centerInParent="true"
+        android:hint="abcd@gmail.com"
+        android:paddingStart="10dp"
+        android:inputType="textEmailAddress"
+        android:fontFamily="@font/iransansweb_fanum_medium"
+        android:background="@drawable/search_style" />
+
+    <EditText
+        android:id="@+id/signup_password_insert"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/search_style"
+        android:paddingStart="10dp"
+        android:fontFamily="@font/iransansweb_fanum_medium"
+        android:hint="password"
+        android:layout_below="@id/signup_email_insert"/>
+
+    <EditText
+        android:id="@+id/signup_name_insert"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/search_style"
+        android:paddingStart="10dp"
+        android:fontFamily="@font/iransansweb_fanum_medium"
+        android:hint="name"
+        android:layout_below="@id/signup_password_insert"/>
+    <Button
+        android:id="@+id/signup_submit_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/reserve_button_style"
+        android:text="ثبت"
+        android:textColor="@color/whiteDark"
+        android:textSize="20sp"
+        android:layout_margin="25dp"
+        android:fontFamily="@font/iransans_fanum_bold"
+        android:layout_below="@id/signup_name_insert"/>
+
+</RelativeLayout>

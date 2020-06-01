@@ -5,16 +5,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.IOException;
 import java.util.List;
-
 import ir.sahand.tour.adapter.MainPageRecyclerAdapter;
 import ir.sahand.tour.model.TourDetails;
 import ir.sahand.tour.model.TourResponse;
+import ir.sahand.tour.model.UserResponse;
 import ir.sahand.tour.webService.APIClient;
 import ir.sahand.tour.webService.APIInterface;
 import retrofit2.Call;
@@ -26,9 +30,10 @@ public class MainActivity extends AppCompatActivity {
     private MainPageRecyclerAdapter adapter;
     private RecyclerView myrecycler;
     private List<TourDetails> tourDetailsList;
-    private TextView offered_tv ;
+    private TextView offered_tv;
     private TextView special_tv;
     private TextView one_day_tv;
+    private TextView username;
     private List<TourDetails> tours;
 
     @Override
@@ -36,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //InputStream inputStream = getResources().openRawResource(R.raw.one_day_tour);
-        //tourDetailsList = JsonParser.parseJason(inputStream);
-        //recyclerSetting(tours);
+        username = (TextView) findViewById(R.id.mainpage_username);
+        registerForContextMenu(username);
+
         toursRequest("");
         //Toast.makeText(MainActivity.this , "JsonParser : Returned" + tourDetailsList.size() + "items" , Toast.LENGTH_SHORT).show();
         TextView see_more = (TextView) findViewById(R.id.list_more);
@@ -47,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SeeMore.class);
                 offered_tv = (TextView) findViewById(R.id.offered_tour_tv);
-                String text= (String) offered_tv.getText();
-                intent.putExtra("Tour_category" , text);
+                String text = (String) offered_tv.getText();
+                intent.putExtra("Tour_category", text);
                 startActivity(intent);
             }
         });
@@ -57,9 +62,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SeeMore.class);
-                special_tv= (TextView) findViewById(R.id.special_tour_tv);
-                String text= (String) special_tv.getText();
-                intent.putExtra("Tour_category" , text);
+                special_tv = (TextView) findViewById(R.id.special_tour_tv);
+                String text = (String) special_tv.getText();
+                intent.putExtra("Tour_category", text);
                 startActivity(intent);
             }
         });
@@ -68,21 +73,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SeeMore.class);
-                one_day_tv= (TextView) findViewById(R.id.one_day_tour_tv);
-                String text= (String) one_day_tv.getText();
-                intent.putExtra("Tour_category" , text);
+                one_day_tv = (TextView) findViewById(R.id.one_day_tour_tv);
+                String text = (String) one_day_tv.getText();
+                intent.putExtra("Tour_category", text);
                 startActivity(intent);
             }
         });
 
     }
-    private void toursRequest(String key){
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        userRequest();
+    }
+
+    private void toursRequest(String key) {
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
         Call<TourResponse> call = apiInterface.getTour(key);
         call.enqueue(new Callback<TourResponse>() {
             @Override
             public void onResponse(Call<TourResponse> call, Response<TourResponse> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     tours = response.body().getTours();
                     recyclerSetting(tours);
                 }
@@ -90,13 +102,45 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<TourResponse> call, Throwable t) {
-                if (t instanceof IOException){
-                    Toast.makeText(MainActivity.this , "Connection Problem!!" , Toast.LENGTH_SHORT).show();
+                if (t instanceof IOException) {
+                    Toast.makeText(MainActivity.this, "Connection Problem Tour Request!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
     }
+
+    private void userRequest() {
+        APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
+        Call<UserResponse> call = apiInterface.getUser();
+        call.enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, final Response<UserResponse> response) {
+                if (response.isSuccessful()) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            username.setText(
+                                    "سلام، " +
+                                            response.body().getUser().getUser_name()
+                                    + "!"
+                            );
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                if (t instanceof IOException) {
+                    Log.d("user error" , t.getLocalizedMessage());
+                    Toast.makeText(MainActivity.this, "error user req", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
+
 
     protected void recyclerSetting(List<TourDetails> list) {
         adapter = new MainPageRecyclerAdapter(this, list);
@@ -119,4 +163,29 @@ public class MainActivity extends AppCompatActivity {
         myList3.setAdapter(adapter);
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.layout.options_menu,menu);
+
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.my_tours :
+                Intent intent = new Intent(getApplicationContext(), MyTours.class);
+                startActivity(intent);
+                break;
+            case R.id.logout :
+                finish();
+                break;
+            default:
+                break;
+
+        }
+        return super.onContextItemSelected(item);
+    }
 }

@@ -8,10 +8,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 
 import java.io.IOException;
@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.util.List;
 
 import ir.sahand.tour.adapter.MainPageRecyclerAdapter;
+import ir.sahand.tour.model.ReservationResponse;
 import ir.sahand.tour.model.TourDetails;
 import ir.sahand.tour.model.TourResponse;
 import ir.sahand.tour.webService.APIClient;
@@ -40,14 +41,25 @@ public class TourPage extends AppCompatActivity {
     private RecyclerView myrecycler;
     private List<TourDetails> tourDetailsList;
     Context mContext;
+    private Button submit;
+    private int id;
+
+
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate  (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tour_activity);
+        submit = (Button) findViewById (R.id.tour_activity_button);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reserveTour(id);
+            }
+        });
 
-        toursRequest();
+
         Bundle bundle= getIntent().getExtras();
         setData(bundle);
         back_btn=(ImageView) findViewById (R.id.back_button_tourpage);
@@ -60,34 +72,27 @@ public class TourPage extends AppCompatActivity {
 
 
     }
-    private void toursRequest(){
+
+    private void reserveTour(int id) {
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
-        Call<TourResponse> call = apiInterface.getTour("");
-        call.enqueue(new Callback<TourResponse>() {
+        Call<ReservationResponse> call = apiInterface.reserve(id);
+        call.enqueue(new Callback<ReservationResponse>() {
             @Override
-            public void onResponse(Call<TourResponse> call, Response<TourResponse> response) {
-                if(response.isSuccessful()){
-                    List<TourDetails> tours = response.body().getTours();
-                    recyclerSetting(tours);
+            public void onResponse(Call<ReservationResponse> call, final Response<ReservationResponse> response) {
+                if (response.isSuccessful()) {
+
                 }
             }
+
             @Override
-            public void onFailure(Call<TourResponse> call, Throwable t) {
-                if (t instanceof IOException){
-                    Toast.makeText(TourPage.this , "Connection Problem!!" , Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<ReservationResponse> call, Throwable t) {
+                if (t instanceof IOException) {
+                    Toast.makeText(TourPage.this, "Reservatin has failed!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
 
-    }
-    protected void recyclerSetting(List<TourDetails> tours) {
-        adapter = new MainPageRecyclerAdapter(this, tours);
-        LinearLayoutManager layoutManager
-                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        RecyclerView myList = (RecyclerView) findViewById(R.id.tour_activity_recycler);
-        myList.setLayoutManager(layoutManager);
-        myList.setAdapter(adapter);
-    }
     private void setData(Bundle bundle){
         tv_name = (TextView) findViewById (R.id.tour_activity_name);
         tv_cost = (TextView) findViewById (R.id.tour_activity_cost);
@@ -97,6 +102,7 @@ public class TourPage extends AppCompatActivity {
         tv_details = (TextView) findViewById(R.id.tour_activity_details);
         tv_location= (TextView) findViewById(R.id.tour_activity_location);
 
+        id = bundle.getInt("Tour_id");
         String name = bundle.getString("Tour_name");
         String cost = bundle.getString("Tour_cost");
         String date = bundle.getString("Tour_date");
@@ -110,10 +116,10 @@ public class TourPage extends AppCompatActivity {
                 .into(image);
 
         tv_name.setText(name);
-        tv_cost.setText(cost + " تومان");
+        tv_cost.setText(Utils.formatMoney(cost));
         tv_details.setText(description);
         tv_details.setMovementMethod(new ScrollingMovementMethod());
-        tv_date.setText(date);
+        tv_date.setText(Utils.convertTimestampToHumanReadableString(date));
         tv_number.setText("ظرفیت باقی مانده :"+ reserved_number +" نفر");
         tv_location.setText(location);
 
