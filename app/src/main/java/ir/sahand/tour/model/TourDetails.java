@@ -2,7 +2,7 @@ package ir.sahand.tour.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class  TourDetails {
+public class TourDetails {
     @SerializedName("id")
     private int id;
     @SerializedName("image")
@@ -25,18 +25,27 @@ public class  TourDetails {
     private String tour_location;
     @SerializedName("reserved_number")
     private String tour_reserved_number;
+    @SerializedName("remaining_capacity")
+    private String remaining_capacity ;
 
-    public TourDetails(String tour_name, String tour_cost, String tour_date, String tour_photo , String tour_number , String tour_description , String tour_details , String tour_gallery ) {
+    public String getRemaining_capacity() {
+        return remaining_capacity;
+    }
+
+    @SerializedName("has_user_reserved_before")
+    private boolean hasUserReservedBefore;
+
+    public TourDetails(String tour_name, String tour_cost, String tour_date, String tour_photo, String tour_number, String tour_description, String tour_details, String tour_gallery) {
         this.tour_name = tour_name;
         this.tour_cost = tour_cost;
         this.tour_date = tour_date;
         this.tour_photo = tour_photo;
         this.tour_number = tour_number;
-        this.tour_description=tour_description;
-        this.tour_details=tour_details;
+        this.tour_description = tour_description;
+        this.tour_details = tour_details;
     }
 
-    public TourDetails(String tour_name, String tour_cost, String tour_date, String tour_photo , String tour_number ) {
+    public TourDetails(String tour_name, String tour_cost, String tour_date, String tour_photo, String tour_number) {
         this.tour_name = tour_name;
         this.tour_cost = tour_cost;
         this.tour_date = tour_date;
@@ -44,7 +53,8 @@ public class  TourDetails {
         this.tour_number = tour_number;
     }
 
-    public TourDetails (){}
+    public TourDetails() {
+    }
 
     public int getId() {
         return id;
@@ -132,5 +142,9 @@ public class  TourDetails {
 
     public void setTour_reserved_number(String tour_reserved_number) {
         this.tour_reserved_number = tour_reserved_number;
+    }
+
+    public boolean isHasUserReservedBefore() {
+        return hasUserReservedBefore;
     }
 }

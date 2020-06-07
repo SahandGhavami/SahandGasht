@@ -59,14 +59,8 @@ public class SeeMoreRecyclerAdapter extends RecyclerView.Adapter<SeeMoreRecycler
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, TourPage.class);
-                intent.putExtra("Tour_name", tourDetailsList.get(position).getTour_name());
-                intent.putExtra("Tour_cost", tourDetailsList.get(position).getTour_cost());
-                intent.putExtra("Tour_date", tourDetailsList.get(position).getTour_date());
-                intent.putExtra("Tour_Photo", tourDetailsList.get(position).getTour_photo());
-                intent.putExtra("Tour_Reserved_Number", tourDetailsList.get(position).getTour_reserved_number());
-                intent.putExtra("Tour_description", tourDetailsList.get(position).getTour_description());
-                intent.putExtra("Tour_details", tourDetailsList.get(position).getTour_details());
-                intent.putExtra("Tour_location",tourDetailsList.get(position).getTour_location());
+
+                intent.putExtra("Tour_id", tourDetailsList.get(position).getId());
                 mContext.startActivity(intent);
             }
         });

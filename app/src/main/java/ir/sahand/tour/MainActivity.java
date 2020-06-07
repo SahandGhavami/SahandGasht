@@ -10,14 +10,13 @@ import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.io.IOException;
 import java.util.List;
 import ir.sahand.tour.adapter.MainPageRecyclerAdapter;
 import ir.sahand.tour.model.TourDetails;
-import ir.sahand.tour.model.TourResponse;
+import ir.sahand.tour.model.ToursResponse;
 import ir.sahand.tour.model.UserResponse;
 import ir.sahand.tour.webService.APIClient;
 import ir.sahand.tour.webService.APIInterface;
@@ -90,10 +89,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void toursRequest(String key) {
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
-        Call<TourResponse> call = apiInterface.getTour(key);
-        call.enqueue(new Callback<TourResponse>() {
+        Call<ToursResponse> call = apiInterface.getTour(key);
+        call.enqueue(new Callback<ToursResponse>() {
             @Override
-            public void onResponse(Call<TourResponse> call, Response<TourResponse> response) {
+            public void onResponse(Call<ToursResponse> call, Response<ToursResponse> response) {
                 if (response.isSuccessful()) {
                     tours = response.body().getTours();
                     recyclerSetting(tours);
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<TourResponse> call, Throwable t) {
+            public void onFailure(Call<ToursResponse> call, Throwable t) {
                 if (t instanceof IOException) {
                     Toast.makeText(MainActivity.this, "Connection Problem Tour Request!!", Toast.LENGTH_SHORT).show();
                 }

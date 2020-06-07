@@ -1,6 +1,5 @@
 package ir.sahand.tour;
 
-import android.app.SearchManager;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +16,7 @@ import java.util.List;
 
 import ir.sahand.tour.adapter.SeeMoreRecyclerAdapter;
 import ir.sahand.tour.model.TourDetails;
-import ir.sahand.tour.model.TourResponse;
+import ir.sahand.tour.model.ToursResponse;
 import ir.sahand.tour.webService.APIClient;
 import ir.sahand.tour.webService.APIInterface;
 import retrofit2.Call;
@@ -70,10 +69,10 @@ public class SeeMore extends AppCompatActivity {
     }
     private void toursRequest(String key){
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
-        Call<TourResponse> call = apiInterface.getTour(key);
-        call.enqueue(new Callback<TourResponse>() {
+        Call<ToursResponse> call = apiInterface.getTour(key);
+        call.enqueue(new Callback<ToursResponse>() {
             @Override
-            public void onResponse(Call<TourResponse> call, Response<TourResponse> response) {
+            public void onResponse(Call<ToursResponse> call, Response<ToursResponse> response) {
                 if(response.isSuccessful()){
                     List<TourDetails> tours = response.body().getTours();
                     recyclerSetting(tours);
@@ -81,7 +80,7 @@ public class SeeMore extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<TourResponse> call, Throwable t) {
+            public void onFailure(Call<ToursResponse> call, Throwable t) {
                 if (t instanceof IOException){
                     Toast.makeText(SeeMore.this , "Connection Problem!!" , Toast.LENGTH_SHORT).show();
                 }

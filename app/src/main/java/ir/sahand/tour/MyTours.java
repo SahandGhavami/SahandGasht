@@ -1,14 +1,13 @@
 package ir.sahand.tour;
 
-import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -16,8 +15,7 @@ import java.util.List;
 
 import ir.sahand.tour.adapter.SeeMoreRecyclerAdapter;
 import ir.sahand.tour.model.TourDetails;
-import ir.sahand.tour.model.TourResponse;
-import ir.sahand.tour.model.UserResponse;
+import ir.sahand.tour.model.ToursResponse;
 import ir.sahand.tour.webService.APIClient;
 import ir.sahand.tour.webService.APIInterface;
 import retrofit2.Call;
@@ -27,6 +25,7 @@ import retrofit2.Response;
 public class MyTours extends AppCompatActivity {
     private SeeMoreRecyclerAdapter adapter;
     private ImageView backbtn;
+    private TextView tour_size;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +33,7 @@ public class MyTours extends AppCompatActivity {
         setContentView(R.layout.activity_my_tours);
 
         backbtn = (ImageView) findViewById (R.id.back_button_mytours);
+        tour_size = (TextView) findViewById (R.id.my_tours_size);
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,18 +45,20 @@ public class MyTours extends AppCompatActivity {
 
     private void myTourRequest() {
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
-        Call<TourResponse> call = apiInterface.getmytour();
-        call.enqueue(new Callback<TourResponse>() {
+        Call<ToursResponse> call = apiInterface.getmytour();
+        call.enqueue(new Callback<ToursResponse>() {
             @Override
-            public void onResponse(Call<TourResponse> call, final Response<TourResponse> response) {
+            public void onResponse(Call<ToursResponse> call, final Response<ToursResponse> response) {
                 if (response.isSuccessful()) {
                     List<TourDetails> tours = response.body().getTours();
+                    int size = tours.size();
+                    tour_size.setText(  " شما " + size + " رزرو کرده اید.");
                     recyclerSetting(tours);
                 }
             }
 
             @Override
-            public void onFailure(Call<TourResponse> call, Throwable t) {
+            public void onFailure(Call<ToursResponse> call, Throwable t) {
                 if (t instanceof IOException) {
                     Log.d("user error" , t.getLocalizedMessage());
                     Toast.makeText(MyTours.this, "My Tours Error", Toast.LENGTH_SHORT).show();

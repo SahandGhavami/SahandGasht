@@ -2,17 +2,11 @@ package ir.sahand.tour.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 public class TourResponse {
-    @SerializedName("Tours")
-    private List<TourDetails> tours;
+    @SerializedName("tour")
+    private TourDetails tour;
 
-    public List<TourDetails> getTours() {
-        return tours;
-    }
-
-    public void setTours(List<TourDetails> tours) {
-        this.tours = tours;
+    public TourDetails getTour() {
+        return tour;
     }
 }

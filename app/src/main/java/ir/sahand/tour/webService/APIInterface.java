@@ -3,6 +3,7 @@ import ir.sahand.tour.model.ReservationResponse;
 import ir.sahand.tour.model.SignupResponse;
 
 import ir.sahand.tour.model.TourResponse;
+import ir.sahand.tour.model.ToursResponse;
 import ir.sahand.tour.model.UserResponse;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -13,10 +14,13 @@ import retrofit2.http.Query;
 
 public interface APIInterface {
     @GET("v1/Api.php?apicall=gettour")
-    Call<TourResponse> getTour(@Query("key") String keyword);
+    Call<ToursResponse> getTour(@Query("key") String keyword);
+
+    @GET("v1/Api.php?apicall=gettourbyid")
+    Call<TourResponse> getTourById(@Query("id") int id);
 
     @GET("v1/Api.php?apicall=mytours")
-    Call<TourResponse> getmytour();
+    Call<ToursResponse> getmytour();
 
     @GET("v1/Api.php?apicall=me")
     Call<UserResponse> getUser();
