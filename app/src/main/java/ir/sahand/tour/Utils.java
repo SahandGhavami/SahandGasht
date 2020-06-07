@@ -4,6 +4,8 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Utils {
@@ -30,7 +32,7 @@ public class Utils {
         try {
             gc.setTime(sdf.parse(datetime));
         } catch (Exception e) {
-            // fuck
+            //nothing
         }
 
         JalaliCalendar jc = new JalaliCalendar(gc);
@@ -49,4 +51,5 @@ public class Utils {
 
         return String.format("%,d", Integer.parseInt(amount)) + " " + currency;
     }
+
 }

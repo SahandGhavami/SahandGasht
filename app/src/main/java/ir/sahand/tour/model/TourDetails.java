@@ -27,11 +27,8 @@ public class TourDetails {
     private String tour_reserved_number;
     @SerializedName("remaining_capacity")
     private String remaining_capacity ;
-
-    public String getRemaining_capacity() {
-        return remaining_capacity;
-    }
-
+    @SerializedName("reserved_at")
+    private String reserved_date;
     @SerializedName("has_user_reserved_before")
     private boolean hasUserReservedBefore;
 
@@ -146,5 +143,12 @@ public class TourDetails {
 
     public boolean isHasUserReservedBefore() {
         return hasUserReservedBefore;
+    }
+
+    public String getReserved_date() {
+        return reserved_date;
+    }
+    public String getRemaining_capacity() {
+        return remaining_capacity;
     }
 }

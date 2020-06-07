@@ -13,6 +13,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.List;
 
+import ir.sahand.tour.adapter.MyToursRecyclerAdapter;
 import ir.sahand.tour.adapter.SeeMoreRecyclerAdapter;
 import ir.sahand.tour.model.TourDetails;
 import ir.sahand.tour.model.ToursResponse;
@@ -23,7 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MyTours extends AppCompatActivity {
-    private SeeMoreRecyclerAdapter adapter;
+    private MyToursRecyclerAdapter adapter;
     private ImageView backbtn;
     private TextView tour_size;
 
@@ -69,7 +70,7 @@ public class MyTours extends AppCompatActivity {
     }
 
     protected void recyclerSetting(List<TourDetails> tours) {
-        adapter = new SeeMoreRecyclerAdapter(this, tours);
+        adapter = new MyToursRecyclerAdapter(this, tours);
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         RecyclerView myList = (RecyclerView) findViewById(R.id.mytours_recycler);

@@ -1,4 +1,6 @@
 package ir.sahand.tour.webService;
+import java.util.Date;
+
 import ir.sahand.tour.model.ReservationResponse;
 import ir.sahand.tour.model.SignupResponse;
 
@@ -35,7 +37,7 @@ public interface APIInterface {
 
     @POST("v1/Api.php?apicall=reservation")
     @FormUrlEncoded
-    Call<ReservationResponse> reserve (@Field("tour_id")int tour_id);
+    Call<ReservationResponse> reserve (@Field("tour_id")int tour_id );
 
 
 

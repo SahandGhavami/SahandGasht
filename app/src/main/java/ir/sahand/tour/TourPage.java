@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 
 import ir.sahand.tour.model.ReservationResponse;
 import ir.sahand.tour.model.TourDetails;
@@ -133,7 +135,7 @@ public class TourPage extends AppCompatActivity {
             @Override
             public void onFailure(Call<ReservationResponse> call, Throwable t) {
                 if (t instanceof IOException) {
-                    Toast.makeText(getApplicationContext(), "Reservatin has failed!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Reservation has failed!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
