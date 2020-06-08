@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_welcome_page">
 
-
     <ImageView
         android:id="@+id/signup_page_logo"
         android:layout_width="200dp"
@@ -53,6 +52,7 @@
         android:fontFamily="@font/iransansweb_fanum_medium"
         android:hint="name"
         android:layout_below="@id/signup_password_insert"/>
+
     <Button
         android:id="@+id/signup_submit_button"
         android:layout_width="match_parent"

@@ -39,8 +39,7 @@
             android:drawableLeft="@drawable/ic_keyboard_arrow_down_black_24dp"
             android:text="کاربر"
             android:textColor="@color/purple"
-            android:fontFamily="@font/iransans_fanum_bold"
-            />
+            android:fontFamily="@font/iransans_fanum_bold" />
 
         <TextView
             android:id="@+id/txt"
@@ -52,8 +51,7 @@
             android:text="تور گردشگریت رو انتخاب کن"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="25dp"
-            android:textSize="15sp"
-            />
+            android:textSize="15sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -73,9 +71,11 @@
             android:background="@drawable/layout_style"
             android:layout_marginTop="270dp"
             android:orientation="horizontal">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <TextView
                     android:id="@+id/offered_tour_tv"
                     android:layout_width="wrap_content"
@@ -87,8 +87,8 @@
                     android:textColor="@color/darkGreen"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="25dp"
-                    />
+                    android:layout_marginRight="24dp" />
+
                 <TextView
                     android:id="@+id/list_more"
                     android:layout_width="wrap_content"
@@ -99,15 +99,15 @@
                     android:fontFamily="@font/iransans_fanum_bold"
                     android:textColor="@color/green"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="25dp"
-                    />
+                    android:layout_marginLeft="24dp" />
+
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/offered_tour_recycler"
                     android:layoutDirection="rtl"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginTop="60dp">
+                    android:layout_marginTop="64dp">
+
                 </android.support.v7.widget.RecyclerView>
             </RelativeLayout>
 
@@ -119,17 +119,19 @@
             android:background="@color/darkGreen"
             android:layout_below="@id/offered_tour"
             android:orientation="horizontal">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <ImageView
                     android:id="@+id/special_tour_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/special_tours"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="10dp"
-                    />
+                    android:layout_marginTop="10dp" />
+
                 <TextView
                     android:id="@+id/special_tour_tv"
                     android:layout_width="wrap_content"
@@ -141,8 +143,8 @@
                     android:textColor="@color/darkGreen"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="15dp"
-                    android:layout_marginRight="25dp"
-                    />
+                    android:layout_marginRight="24dp" />
+
                 <TextView
                     android:id="@+id/list_more_2"
                     android:layout_width="wrap_content"
@@ -153,16 +155,15 @@
                     android:fontFamily="@font/iransans_fanum_bold"
                     android:textColor="@color/greenLight"
                     android:layout_marginTop="15dp"
-                    android:layout_marginLeft="25dp"
-                    />
+                    android:layout_marginLeft="24dp" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/special_tour_recycler"
                     android:layoutDirection="rtl"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginTop="60dp">
+                    android:layout_marginTop="64dp">
+
                 </android.support.v7.widget.RecyclerView>
 
 
@@ -175,9 +176,11 @@
             android:background="@color/white"
             android:layout_below="@id/special_tour"
             android:orientation="horizontal">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <TextView
                     android:id="@+id/one_day_tour_tv"
                     android:layout_width="wrap_content"
@@ -189,8 +192,8 @@
                     android:textColor="@color/darkGreen"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="25dp"
-                    />
+                    android:layout_marginRight="24dp" />
+
                 <TextView
                     android:id="@+id/list_more_3"
                     android:layout_width="wrap_content"
@@ -201,19 +204,17 @@
                     android:fontFamily="@font/iransans_fanum_bold"
                     android:textColor="@color/green"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="25dp"
-                    />
+                    android:layout_marginLeft="24dp" />
+
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/oneday_tour_recycler"
                     android:layoutDirection="rtl"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginTop="60dp">
+                    android:layout_marginTop="64dp">
                 </android.support.v7.widget.RecyclerView>
+
             </RelativeLayout>
-
         </LinearLayout>
-
     </RelativeLayout>
 </ScrollView>

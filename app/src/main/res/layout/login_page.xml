@@ -41,7 +41,6 @@
             android:hint="password"
             android:layout_below="@id/login_email_insert"/>
 
-
         <Button
             android:id="@+id/login_submit_button"
             android:layout_width="match_parent"

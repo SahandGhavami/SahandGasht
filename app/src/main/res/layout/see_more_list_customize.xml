@@ -43,8 +43,7 @@
         android:textColor="@color/darkGreen"
         android:layout_marginRight="5dp"
         android:layout_toLeftOf="@id/see_more_money_logo"
-        android:fontFamily="@font/iransansweb_fanum_light"
-        />
+        android:fontFamily="@font/iransansweb_fanum_light" />
 
     <ImageView
         android:id="@+id/see_more_date_logo"
@@ -53,8 +52,7 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@id/see_more_money_logo"
         android:src="@drawable/date"
-        android:layout_marginTop="6dp"
-        />
+        android:layout_marginTop="6dp" />
 
     <TextView
         android:id="@+id/see_more_date"
@@ -66,8 +64,7 @@
         android:layout_marginTop="6dp"
         android:layout_marginRight="5dp"
         android:fontFamily="@font/iransansweb_fanum_light"
-        android:textColor="@color/darkGreen"
-        />
+        android:textColor="@color/darkGreen" />
 
     <ImageView
         android:id="@+id/see_more_people_logo"
@@ -101,6 +98,5 @@
         android:fontFamily="@font/iransans_fanum_bold"
         android:textColor="@color/white"
         />
-
 
 </RelativeLayout>

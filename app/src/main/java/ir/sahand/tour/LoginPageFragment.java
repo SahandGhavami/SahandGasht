@@ -43,6 +43,7 @@ public class LoginPageFragment extends Fragment {
         });
         return view;
     }
+
     public void loginUsers(final String email , String password){
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
         Call<SignupResponse> call = apiInterface.loginUser(email , password);
@@ -52,6 +53,7 @@ public class LoginPageFragment extends Fragment {
                 if (response.isSuccessful() && !response.body().getError()){
                     SharedPreferencesHelper.set("token", response.body().getToken());
                     startActivity(new Intent( getContext() , MainActivity.class));
+                } else {
 
                 }
             }
@@ -61,6 +63,4 @@ public class LoginPageFragment extends Fragment {
             }
         });
     }
-
-
 }

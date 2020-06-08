@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import ir.sahand.tour.model.SignupResponse;
 import ir.sahand.tour.webService.APIClient;
 import ir.sahand.tour.webService.APIInterface;
@@ -23,7 +22,6 @@ public class SignUpFragment extends Fragment {
     private EditText signup_email;
     private EditText signup_password;
     private EditText signup_name;
-    private Button backbtn;
 
     @Nullable
     @Override
@@ -53,10 +51,12 @@ public class SignUpFragment extends Fragment {
         call.enqueue(new Callback<SignupResponse>() {
             @Override
             public void onResponse(Call<SignupResponse> call, Response<SignupResponse> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful() && !response.body().getError()){
                     SharedPreferencesHelper.set("token", response.body().getToken());
                     startActivity(new Intent( getContext() , MainActivity.class));
                     Toast.makeText(getContext(), "added!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), "This email has signed up before!", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override

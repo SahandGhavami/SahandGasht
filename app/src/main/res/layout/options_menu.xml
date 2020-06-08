@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content"
     android:layout_width="wrap_content">
+
     <item android:id="@+id/my_tours"
-        android:title="تورهای من"
-        />
+        android:title="تورهای من" />
 
     <item android:id="@+id/logout"
         android:title="خروج"/>
+
 </menu>
