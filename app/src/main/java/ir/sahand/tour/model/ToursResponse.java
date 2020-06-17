@@ -6,13 +6,13 @@ import java.util.List;
 
 public class ToursResponse {
     @SerializedName("tours")
-    private List<TourDetails> tours;
+    private List<TourModel> tours;
 
-    public List<TourDetails> getTours() {
+    public List<TourModel> getTours() {
         return tours;
     }
 
-    public void setTours(List<TourDetails> tours) {
+    public void setTours(List<TourModel> tours) {
         this.tours = tours;
     }
 }

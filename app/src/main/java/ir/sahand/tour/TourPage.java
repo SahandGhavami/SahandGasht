@@ -2,6 +2,7 @@ package ir.sahand.tour;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -10,14 +11,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.Date;
 
+import ir.sahand.tour.adapter.ViewPagerAdapter;
 import ir.sahand.tour.model.ReservationResponse;
-import ir.sahand.tour.model.TourDetails;
+import ir.sahand.tour.model.TourModel;
 import ir.sahand.tour.model.TourResponse;
 import ir.sahand.tour.webService.APIClient;
 import ir.sahand.tour.webService.APIInterface;
@@ -38,7 +36,7 @@ public class TourPage extends AppCompatActivity {
 
     private int id;
 
-    private TourDetails tour;
+    private TourModel tour;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -57,7 +55,7 @@ public class TourPage extends AppCompatActivity {
         tv_name = (TextView) findViewById(R.id.tour_activity_name);
         tv_cost = (TextView) findViewById(R.id.tour_activity_cost);
         tv_date = (TextView) findViewById(R.id.tour_activity_date);
-        image = (ImageView) findViewById(R.id.tour_activity_image);
+        //image = (ImageView) findViewById(R.id.tour_activity_image);
         tv_number = (TextView) findViewById(R.id.tour_activity_number);
         tv_details = (TextView) findViewById(R.id.tour_activity_details);
         tv_location = (TextView) findViewById(R.id.tour_activity_location);
@@ -94,10 +92,10 @@ public class TourPage extends AppCompatActivity {
     }
 
     void refreshViews() {
-        Glide
-                .with(this)
-                .load(tour.getTour_photo())
-                .into(image);
+        ViewPager viewPager = (ViewPager) findViewById (R.id.tour_activity_viewpager);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this , tour.getImages());
+        viewPager.setAdapter(viewPagerAdapter);
+
 
         tv_name.setText(tour.getTour_name());
         tv_cost.setText(Utils.formatMoney(tour.getTour_cost()));

@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 import ir.sahand.tour.adapter.SeeMoreRecyclerAdapter;
-import ir.sahand.tour.model.TourDetails;
+import ir.sahand.tour.model.TourModel;
 import ir.sahand.tour.model.ToursResponse;
 import ir.sahand.tour.webService.APIClient;
 import ir.sahand.tour.webService.APIInterface;
@@ -29,7 +29,7 @@ public class SeeMore extends AppCompatActivity {
     private SeeMoreRecyclerAdapter adapter;
     private RecyclerView myrecycler;
     private ImageView back_btn;
-    private List<TourDetails> tourDetailsList;
+    private List<TourModel> tourModelList;
     private TextView tour_category;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +74,7 @@ public class SeeMore extends AppCompatActivity {
             @Override
             public void onResponse(Call<ToursResponse> call, Response<ToursResponse> response) {
                 if(response.isSuccessful()){
-                    List<TourDetails> tours = response.body().getTours();
+                    List<TourModel> tours = response.body().getTours();
                     recyclerSetting(tours);
                 }
             }
@@ -88,7 +88,7 @@ public class SeeMore extends AppCompatActivity {
         });
 
     }
-    protected void recyclerSetting(List<TourDetails> tours) {
+    protected void recyclerSetting(List<TourModel> tours) {
         adapter = new SeeMoreRecyclerAdapter(this, tours);
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);

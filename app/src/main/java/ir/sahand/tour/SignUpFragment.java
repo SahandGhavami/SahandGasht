@@ -52,7 +52,9 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onResponse(Call<SignupResponse> call, Response<SignupResponse> response) {
                 if (response.isSuccessful() && !response.body().getError()){
-                    SharedPreferencesHelper.set("token", response.body().getToken());
+                    //SharedPreferencesHelper.set("token", response.body().getToken());
+                    AppPreferenceTools.getInstance(getContext().getApplicationContext())
+                            .saveUserAuthenticationInfo(response.body());
                     startActivity(new Intent( getContext() , MainActivity.class));
                     Toast.makeText(getContext(), "added!", Toast.LENGTH_SHORT).show();
                 }else{

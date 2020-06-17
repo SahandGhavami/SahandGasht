@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class TourResponse {
     @SerializedName("tour")
-    private TourDetails tour;
+    private TourModel tour;
 
-    public TourDetails getTour() {
+    public TourModel getTour() {
         return tour;
     }
 }

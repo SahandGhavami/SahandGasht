@@ -14,8 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 import ir.sahand.tour.adapter.MyToursRecyclerAdapter;
-import ir.sahand.tour.adapter.SeeMoreRecyclerAdapter;
-import ir.sahand.tour.model.TourDetails;
+import ir.sahand.tour.model.TourModel;
 import ir.sahand.tour.model.ToursResponse;
 import ir.sahand.tour.webService.APIClient;
 import ir.sahand.tour.webService.APIInterface;
@@ -51,7 +50,7 @@ public class MyTours extends AppCompatActivity {
             @Override
             public void onResponse(Call<ToursResponse> call, final Response<ToursResponse> response) {
                 if (response.isSuccessful()) {
-                    List<TourDetails> tours = response.body().getTours();
+                    List<TourModel> tours = response.body().getTours();
                     int size = tours.size();
                     tour_size.setText(  " شما " + size + " رزرو کرده اید.");
                     recyclerSetting(tours);
@@ -69,7 +68,7 @@ public class MyTours extends AppCompatActivity {
 
     }
 
-    protected void recyclerSetting(List<TourDetails> tours) {
+    protected void recyclerSetting(List<TourModel> tours) {
         adapter = new MyToursRecyclerAdapter(this, tours);
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);

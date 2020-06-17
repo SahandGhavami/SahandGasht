@@ -19,16 +19,16 @@ import java.util.List;
 import ir.sahand.tour.R;
 import ir.sahand.tour.TourPage;
 import ir.sahand.tour.Utils;
-import ir.sahand.tour.model.TourDetails;
+import ir.sahand.tour.model.TourModel;
 
 public class MyToursRecyclerAdapter extends RecyclerView.Adapter<MyToursRecyclerAdapter.MyViewHolder> {
     Context mContext;
-    List<TourDetails> tourDetailsList;
-    List<TourDetails> tourDetailsListFiltered;
+    List<TourModel> tourModelList;
+    List<TourModel> tourModelListFiltered;
 
-    public MyToursRecyclerAdapter(Context mContext, List<TourDetails> tourDetailsList) {
+    public MyToursRecyclerAdapter(Context mContext, List<TourModel> tourModelList) {
         this.mContext = mContext;
-        this.tourDetailsList = tourDetailsList;
+        this.tourModelList = tourModelList;
     }
 
     @NonNull
@@ -43,36 +43,36 @@ public class MyToursRecyclerAdapter extends RecyclerView.Adapter<MyToursRecycler
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.tour_name.setText(tourDetailsList.get(position).getTour_name());
-        holder.tour_cost.setText(Utils.formatMoney(tourDetailsList.get(position).getTour_cost())
+        TourModel tour = tourModelList.get(position);
+
+        holder.tour_name.setText(tourModelList.get(position).getTour_name());
+        holder.tour_cost.setText(Utils.formatMoney(tourModelList.get(position).getTour_cost())
         );
-        holder.tour_cost.setText(Utils.formatMoney(tourDetailsList.get(position).getTour_cost())
+        holder.tour_cost.setText(Utils.formatMoney(tourModelList.get(position).getTour_cost())
         );
-        holder.tour_reserved_date.setText(Utils.convertTimestampToHumanReadableString(tourDetailsList.get(position).getReserved_date()) +" "+"این تور را رزرو کرده اید.");
-        holder.tour_date.setText(Utils.convertTimestampToHumanReadableString(tourDetailsList.get(position).getTour_date())
+        holder.tour_reserved_date.setText(Utils.convertTimestampToHumanReadableString(tourModelList.get(position).getReserved_date()) +" "+"این تور را رزرو کرده اید.");
+        holder.tour_date.setText(Utils.convertTimestampToHumanReadableString(tourModelList.get(position).getTour_date())
         );
-        holder.tour_reserved_number.setText(tourDetailsList.get(position).getTour_number()+" نفر رزرو کرده‌");
-        String photo_url = tourDetailsList.get(position).getTour_photo();
-        Glide
-                .with(mContext)
-                .load(photo_url)
-                .into(holder.tour_img);
+        holder.tour_reserved_number.setText(tourModelList.get(position).getTour_number()+" نفر رزرو کرده‌");
+        if (tour.getImages().length > 0){
+            Glide
+                    .with(mContext)
+                    .load(tour.getImages()[0])
+                    .into(holder.tour_img);
+        }
         holder.more_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, TourPage.class);
-                intent.putExtra("Tour_id", tourDetailsList.get(position).getId());
+                intent.putExtra("Tour_id", tourModelList.get(position).getId());
                 mContext.startActivity(intent);
             }
         });
-
-
     }
-
 
     @Override
     public int getItemCount() {
-        return tourDetailsList.size();
+        return tourModelList == null ? 0 : tourModelList.size();
 
     }
 

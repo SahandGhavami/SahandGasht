@@ -2,11 +2,11 @@ package ir.sahand.tour.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class TourDetails {
+public class TourModel {
     @SerializedName("id")
     private int id;
-    @SerializedName("image")
-    private String tour_photo;
+    @SerializedName("images")
+    private String[] images;
     @SerializedName("name")
     private String tour_name;
     @SerializedName("cost")
@@ -32,25 +32,25 @@ public class TourDetails {
     @SerializedName("has_user_reserved_before")
     private boolean hasUserReservedBefore;
 
-    public TourDetails(String tour_name, String tour_cost, String tour_date, String tour_photo, String tour_number, String tour_description, String tour_details, String tour_gallery) {
+    public TourModel(String tour_name, String tour_cost, String tour_date, String[] images, String tour_number, String tour_description, String tour_details, String tour_gallery) {
         this.tour_name = tour_name;
         this.tour_cost = tour_cost;
         this.tour_date = tour_date;
-        this.tour_photo = tour_photo;
+        this.images = images;
         this.tour_number = tour_number;
         this.tour_description = tour_description;
         this.tour_details = tour_details;
     }
 
-    public TourDetails(String tour_name, String tour_cost, String tour_date, String tour_photo, String tour_number) {
+    public TourModel(String tour_name, String tour_cost, String tour_date, String[] images, String tour_number) {
         this.tour_name = tour_name;
         this.tour_cost = tour_cost;
         this.tour_date = tour_date;
-        this.tour_photo = tour_photo;
+        this.images = images;
         this.tour_number = tour_number;
     }
 
-    public TourDetails() {
+    public TourModel() {
     }
 
     public int getId() {
@@ -109,12 +109,12 @@ public class TourDetails {
         this.tour_date = tour_date;
     }
 
-    public String getTour_photo() {
-        return tour_photo;
+    public String[] getImages() {
+        return images;
     }
 
-    public void setTour_photo(String tour_photo) {
-        this.tour_photo = tour_photo;
+    public void setImages(String[] images) {
+        this.images = images;
     }
 
     public String getTour_category() {

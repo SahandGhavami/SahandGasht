@@ -18,18 +18,18 @@ import java.util.List;
 
 import ir.sahand.tour.R;
 import ir.sahand.tour.Utils;
-import ir.sahand.tour.model.TourDetails;
+import ir.sahand.tour.model.TourModel;
 import ir.sahand.tour.TourPage;
 
 public class SeeMoreRecyclerAdapter extends RecyclerView.Adapter<SeeMoreRecyclerAdapter.MyViewHolder> {
     Context mContext;
-    List<TourDetails> tourDetailsList;
-    List<TourDetails> tourDetailsListFiltered;
+    List<TourModel> tourModelList;
+    List<TourModel> tourModelListFiltered;
 
 
-    public SeeMoreRecyclerAdapter(Context mContext, List<TourDetails> tourDetailsList) {
+    public SeeMoreRecyclerAdapter(Context mContext, List<TourModel> tourModelList) {
         this.mContext = mContext;
-        this.tourDetailsList = tourDetailsList;
+        this.tourModelList = tourModelList;
     }
 
     @NonNull
@@ -44,57 +44,57 @@ public class SeeMoreRecyclerAdapter extends RecyclerView.Adapter<SeeMoreRecycler
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.tour_name.setText(tourDetailsList.get(position).getTour_name());
-        holder.tour_cost.setText(Utils.formatMoney(tourDetailsList.get(position).getTour_cost())
+        TourModel tour = tourModelList.get(position);
+        holder.tour_name.setText(tourModelList.get(position).getTour_name());
+        holder.tour_cost.setText(Utils.formatMoney(tourModelList.get(position).getTour_cost())
         );
-        holder.tour_date.setText(Utils.convertTimestampToHumanReadableString(tourDetailsList.get(position).getTour_date())
+        holder.tour_date.setText(Utils.convertTimestampToHumanReadableString(tourModelList.get(position).getTour_date())
         );
-        holder.tour_reserved_number.setText(tourDetailsList.get(position).getTour_number()+" نفر رزرو کرده‌");
-        String photo_url = tourDetailsList.get(position).getTour_photo();
-        Glide
-                .with(mContext)
-                .load(photo_url)
-                .into(holder.tour_img);
+        holder.tour_reserved_number.setText(tourModelList.get(position).getTour_number() + " نفر رزرو کرده‌");
+        //String photo_url = tourDetailsList.get(position).getTour_photo();
+        if (tour.getImages().length > 0) {
+            Glide
+                    .with(mContext)
+                    .load(tour.getImages()[0])
+                    .into(holder.tour_img);
+        }
+
         holder.more_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, TourPage.class);
 
-                intent.putExtra("Tour_id", tourDetailsList.get(position).getId());
+                intent.putExtra("Tour_id", tourModelList.get(position).getId());
                 mContext.startActivity(intent);
             }
         });
-
-
     }
-
 
     @Override
     public int getItemCount() {
-        return tourDetailsList.size();
-
+        return tourModelList == null ? 0 : tourModelList.size();
     }
 
-            public class MyViewHolder extends RecyclerView.ViewHolder {
-                private RelativeLayout relativeLayout;
-                private TextView tour_name;
-                private TextView tour_cost;
-                private TextView tour_date;
-                private TextView tour_reserved_number;
-                //private TextView tour_location;
-                private ImageView tour_img;
-                private Button more_details;
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        private RelativeLayout relativeLayout;
+        private TextView tour_name;
+        private TextView tour_cost;
+        private TextView tour_date;
+        private TextView tour_reserved_number;
+        //private TextView tour_location;
+        private ImageView tour_img;
+        private Button more_details;
 
-                public MyViewHolder(View itemView) {
-                    super(itemView);
-                    relativeLayout = (RelativeLayout) itemView.findViewById(R.id.see_more_layout);
-                    tour_name = (TextView) itemView.findViewById(R.id.see_more_title);
-                    tour_cost = (TextView) itemView.findViewById(R.id.see_more_cost);
-                    tour_date = (TextView) itemView.findViewById(R.id.see_more_date);
-                    tour_reserved_number = (TextView) itemView.findViewById(R.id.see_more_people);
-                    tour_img = (ImageView) itemView.findViewById(R.id.see_more_image);
-                    //tour_location=(TextView) itemView.findViewById(R.id.tour_activity_location);
-                    more_details = (Button) itemView.findViewById(R.id.see_more_button);
-                }
-            }
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.see_more_layout);
+            tour_name = (TextView) itemView.findViewById(R.id.see_more_title);
+            tour_cost = (TextView) itemView.findViewById(R.id.see_more_cost);
+            tour_date = (TextView) itemView.findViewById(R.id.see_more_date);
+            tour_reserved_number = (TextView) itemView.findViewById(R.id.see_more_people);
+            tour_img = (ImageView) itemView.findViewById(R.id.see_more_image);
+            //tour_location=(TextView) itemView.findViewById(R.id.tour_activity_location);
+            more_details = (Button) itemView.findViewById(R.id.see_more_button);
+        }
+    }
 }

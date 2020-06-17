@@ -5,7 +5,9 @@ import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 
+import ir.sahand.tour.AppPreferenceTools;
 import ir.sahand.tour.SharedPreferencesHelper;
+import ir.sahand.tour.TApplication;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -15,18 +17,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIClient {
 
-    public static final String BASE_URL = "http://192.168.1.5/TOURS/";
-    //public static final String URL_CREATE_TOUR = BASE_URL +"createtour";
-    //public static final String URL_READ_TOUR = BASE_URL +"gettour";
-    //public static final String URL_UPDATE_TOUR = BASE_URL +"updatetour";
+    public static final String BASE_URL = "http://192.168.1.8/TOURS/";
+
 
     private static Retrofit retrofit = null;
 
     public static Retrofit getClient() {
         if (retrofit == null) {
-            //Gson gson = new GsonBuilder()
-                    //.setLenient()
-                   // .create();
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
@@ -35,7 +32,7 @@ public class APIClient {
                                     .addInterceptor(new Interceptor() {
                                         @Override
                                         public Response intercept(Chain chain) throws IOException {
-                                            String token = SharedPreferencesHelper.get("token");
+                                            String token = AppPreferenceTools.getInstance().getToken();
 
                                             Request request;
                                             if (token != null) {

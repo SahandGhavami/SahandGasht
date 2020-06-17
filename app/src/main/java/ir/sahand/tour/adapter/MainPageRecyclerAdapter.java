@@ -17,16 +17,16 @@ import java.util.List;
 
 import ir.sahand.tour.R;
 import ir.sahand.tour.Utils;
-import ir.sahand.tour.model.TourDetails;
+import ir.sahand.tour.model.TourModel;
 import ir.sahand.tour.TourPage;
 
 public class MainPageRecyclerAdapter extends RecyclerView.Adapter<MainPageRecyclerAdapter.MyViewHolder> {
     Context mContext;
-    List<TourDetails> tourDetailsList;
+    List<TourModel> tourModelList;
 
-    public MainPageRecyclerAdapter(Context mContext, List<TourDetails> tours) {
+    public MainPageRecyclerAdapter(Context mContext, List<TourModel> tours) {
         this.mContext = mContext;
-        this.tourDetailsList = tours;
+        this.tourModelList = tours;
     }
 
     @NonNull
@@ -36,41 +36,44 @@ public class MainPageRecyclerAdapter extends RecyclerView.Adapter<MainPageRecycl
         v = LayoutInflater.from(mContext).inflate(R.layout.recycleview_card ,parent ,false);
         MyViewHolder vHolder = new MyViewHolder(v);
 
-
-
         return vHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder,final int position) {
-        holder.tour_name.setText(tourDetailsList.get(position).getTour_name());
+        TourModel tour = tourModelList.get(position);
+
+        holder.tour_name.setText(tourModelList.get(position).getTour_name());
         holder.tour_cost.setText(
-                Utils.formatMoney(tourDetailsList.get(position).getTour_cost())
+                Utils.formatMoney(tourModelList.get(position).getTour_cost())
         );
         holder.tour_date.setText(
-                Utils.convertTimestampToHumanReadableString(tourDetailsList.get(position).getTour_date())
+                Utils.convertTimestampToHumanReadableString(tourModelList.get(position).getTour_date())
         );
-        holder.tour_number.setText(tourDetailsList.get(position).getTour_number()+" نفر");
-        String photo_url = tourDetailsList.get(position).getTour_photo();
-        Glide
-                .with(mContext)
-                .load(photo_url)
-                .into(holder.tour_img);
+        holder.tour_number.setText(tourModelList.get(position).getTour_number()+" نفر");
+        //String photo_url = tourDetailsList.get(position).getTour_photo();
+
+        if (tour.getImages().length > 0){
+            Glide
+                    .with(mContext)
+                    .load(tour.getImages()[0])
+                    .into(holder.tour_img);
+        }
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, TourPage.class);
-                intent.putExtra("Tour_id" , tourDetailsList.get(position).getId());
-                intent.putExtra("Tour_name" , tourDetailsList.get(position).getTour_name());
-                intent.putExtra("Tour_cost" , tourDetailsList.get(position).getTour_cost());
-                intent.putExtra("Tour_date" , tourDetailsList.get(position).getTour_date());
-                intent.putExtra("Tour_Photo" ,tourDetailsList.get(position).getTour_photo());
-                intent.putExtra("Tour_Reserved_Number" , tourDetailsList.get(position).getTour_reserved_number());
-                intent.putExtra("Tour_description" ,  tourDetailsList.get(position).getTour_description());
-                intent.putExtra("Tour_details" , tourDetailsList.get(position).getTour_details());
-                intent.putExtra("Tour_location" , tourDetailsList.get(position).getTour_location());
+                intent.putExtra("Tour_id" , tourModelList.get(position).getId());
+                intent.putExtra("Tour_name" , tourModelList.get(position).getTour_name());
+                intent.putExtra("Tour_cost" , tourModelList.get(position).getTour_cost());
+                intent.putExtra("Tour_date" , tourModelList.get(position).getTour_date());
+                intent.putExtra("Tour_Photo" , tourModelList.get(position).getImages());
+                intent.putExtra("Tour_Reserved_Number" , tourModelList.get(position).getTour_reserved_number());
+                intent.putExtra("Tour_description" ,  tourModelList.get(position).getTour_description());
+                intent.putExtra("Tour_details" , tourModelList.get(position).getTour_details());
+                intent.putExtra("Tour_location" , tourModelList.get(position).getTour_location());
                 mContext.startActivity(intent);
             }
         });
@@ -79,7 +82,7 @@ public class MainPageRecyclerAdapter extends RecyclerView.Adapter<MainPageRecycl
 
     @Override
     public int getItemCount() {
-        return tourDetailsList == null ? 0 : tourDetailsList.size();
+        return tourModelList == null ? 0 : tourModelList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

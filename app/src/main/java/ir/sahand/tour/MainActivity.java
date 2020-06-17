@@ -15,7 +15,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.List;
 import ir.sahand.tour.adapter.MainPageRecyclerAdapter;
-import ir.sahand.tour.model.TourDetails;
+import ir.sahand.tour.model.TourModel;
 import ir.sahand.tour.model.ToursResponse;
 import ir.sahand.tour.model.UserResponse;
 import ir.sahand.tour.webService.APIClient;
@@ -28,57 +28,58 @@ public class MainActivity extends AppCompatActivity {
     View v;
     private MainPageRecyclerAdapter adapter;
     private RecyclerView myrecycler;
-    private List<TourDetails> tourDetailsList;
+    private List<TourModel> tourModelList;
     private TextView offered_tv;
     private TextView special_tv;
     private TextView one_day_tv;
     private TextView username;
-    private List<TourDetails> tours;
+    private List<TourModel> tours;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        username = (TextView) findViewById(R.id.mainpage_username);
-        registerForContextMenu(username);
-
-        toursRequest("");
-        //Toast.makeText(MainActivity.this , "JsonParser : Returned" + tourDetailsList.size() + "items" , Toast.LENGTH_SHORT).show();
-        TextView see_more = (TextView) findViewById(R.id.list_more);
-        see_more.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SeeMore.class);
-                offered_tv = (TextView) findViewById(R.id.offered_tour_tv);
-                String text = (String) offered_tv.getText();
-                intent.putExtra("Tour_category", text);
-                startActivity(intent);
-            }
-        });
-        TextView see_more2 = (TextView) findViewById(R.id.list_more_2);
-        see_more2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SeeMore.class);
-                special_tv = (TextView) findViewById(R.id.special_tour_tv);
-                String text = (String) special_tv.getText();
-                intent.putExtra("Tour_category", text);
-                startActivity(intent);
-            }
-        });
-        TextView see_more3 = (TextView) findViewById(R.id.list_more_3);
-        see_more3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SeeMore.class);
-                one_day_tv = (TextView) findViewById(R.id.one_day_tour_tv);
-                String text = (String) one_day_tv.getText();
-                intent.putExtra("Tour_category", text);
-                startActivity(intent);
-            }
-        });
-
+        if(AppPreferenceTools.getInstance(getApplicationContext()).isAuthorized()) {
+            username = (TextView) findViewById(R.id.mainpage_username);
+            registerForContextMenu(username);
+            toursRequest("");
+            TextView see_more = (TextView) findViewById(R.id.list_more);
+            see_more.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), SeeMore.class);
+                    offered_tv = (TextView) findViewById(R.id.offered_tour_tv);
+                    String text = (String) offered_tv.getText();
+                    intent.putExtra("Tour_category", text);
+                    startActivity(intent);
+                }
+            });
+            TextView see_more2 = (TextView) findViewById(R.id.list_more_2);
+            see_more2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), SeeMore.class);
+                    special_tv = (TextView) findViewById(R.id.special_tour_tv);
+                    String text = (String) special_tv.getText();
+                    intent.putExtra("Tour_category", text);
+                    startActivity(intent);
+                }
+            });
+            TextView see_more3 = (TextView) findViewById(R.id.list_more_3);
+            see_more3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), SeeMore.class);
+                    one_day_tv = (TextView) findViewById(R.id.one_day_tour_tv);
+                    String text = (String) one_day_tv.getText();
+                    intent.putExtra("Tour_category", text);
+                    startActivity(intent);
+                }
+            });
+        } else {
+          startActivity(new Intent(this , FirstPageActivity.class));
+          finish();
+        }
     }
 
     @Override
@@ -106,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     private void userRequest() {
@@ -137,11 +137,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
-
-    protected void recyclerSetting(List<TourDetails> list) {
+    protected void recyclerSetting(List<TourModel> list) {
         adapter = new MainPageRecyclerAdapter(this, list);
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -165,25 +163,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.layout.options_menu,menu);
-
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.my_tours :
-                Intent intent = new Intent(getApplicationContext(), MyTours.class);
+                Intent intent = new Intent(getApplicationContext() , MyTours.class);
                 startActivity(intent);
                 break;
             case R.id.logout :
+                AppPreferenceTools.getInstance(getApplicationContext()).removeAllPrefs();
                 finish();
                 break;
             default:
                 break;
-
         }
         return super.onContextItemSelected(item);
     }
