@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import ir.sahand.tour.adapter.SeeMoreRecyclerAdapter;
@@ -113,6 +114,7 @@ public class SeeMore extends AppCompatActivity {
     }
 
     protected void recyclerSetting(List<TourModel> tours) {
+        Collections.sort(tours,TourModel.date);
         adapter = new SeeMoreRecyclerAdapter(this, tours);
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);

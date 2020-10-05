@@ -1,8 +1,12 @@
 package ir.sahand.tour.model;
 
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
-public class TourModel {
+import java.util.Comparator;
+
+public class TourModel implements Comparable<TourModel> {
     @SerializedName("id")
     private int id;
     @SerializedName("images")
@@ -161,4 +165,16 @@ public class TourModel {
     public void setTour_return_date(String tour_return_date) {
         this.tour_return_date = tour_return_date;
     }
+
+
+    @Override
+    public int compareTo(@NonNull TourModel o) {
+        return this.id - o.getId();
+    }
+    public static Comparator<TourModel> date = new Comparator<TourModel>() {
+        @Override
+        public int compare(TourModel t1, TourModel t2) {
+            return t1.getTour_date().compareTo(t2.getTour_date());
+        }
+    };
 }

@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import ir.sahand.tour.adapter.MainPageRecyclerAdapter;
 import ir.sahand.tour.model.TourModel;
@@ -140,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void recyclerSetting(List<TourModel> list) {
+        Collections.sort(list,TourModel.date);
         adapter = new MainPageRecyclerAdapter(this, list);
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
