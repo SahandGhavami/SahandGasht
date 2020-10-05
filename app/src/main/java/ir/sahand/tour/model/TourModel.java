@@ -13,6 +13,8 @@ public class TourModel {
     private String tour_cost;
     @SerializedName("date")
     private String tour_date;
+    @SerializedName("return_date")
+    private String tour_return_date;
     @SerializedName("capacity")
     private String tour_number;
     @SerializedName("details")
@@ -31,7 +33,6 @@ public class TourModel {
     private String reserved_date;
     @SerializedName("has_user_reserved_before")
     private boolean hasUserReservedBefore;
-
     public TourModel(String tour_name, String tour_cost, String tour_date, String[] images, String tour_number, String tour_description, String tour_details, String tour_gallery) {
         this.tour_name = tour_name;
         this.tour_cost = tour_cost;
@@ -148,7 +149,16 @@ public class TourModel {
     public String getReserved_date() {
         return reserved_date;
     }
+
     public String getRemaining_capacity() {
         return remaining_capacity;
+    }
+
+    public String getTour_return_date() {
+        return tour_return_date;
+    }
+
+    public void setTour_return_date(String tour_return_date) {
+        this.tour_return_date = tour_return_date;
     }
 }

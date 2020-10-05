@@ -14,7 +14,7 @@
         android:id="@+id/see_more_layout"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="330dp"
+        android:layout_height="360dp"
         android:layout_margin="4dp"
         android:background="@drawable/image_style"
         xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -24,7 +24,7 @@
             android:layout_alignParentRight="true"
             android:scaleType="fitXY"
             android:layout_width="match_parent"
-            android:layout_height="150dp"/>
+            android:layout_height="160dp"/>
 
         <TextView
             android:id="@+id/see_more_title"
@@ -78,19 +78,40 @@
             android:textColor="@color/darkGreen" />
 
         <ImageView
+            android:id="@+id/see_more_date1_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/see_more_date_logo"
+            android:src="@drawable/date"
+            android:layout_marginTop="6dp" />
+
+        <TextView
+            android:id="@+id/see_more_return_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/see_more_date_logo"
+            android:layout_toLeftOf="@id/see_more_date_logo"
+            android:text="@string/one_day_tour"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="5dp"
+            android:fontFamily="@font/iransansweb_fanum_light"
+            android:textColor="@color/darkGreen" />
+
+        <ImageView
             android:id="@+id/see_more_people_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/people"
             android:layout_alignParentEnd="true"
-            android:layout_below="@id/see_more_date"
+            android:layout_below="@id/see_more_return_date"
             android:layout_marginTop="6dp"/>
 
         <TextView
             android:id="@+id/see_more_people"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/see_more_date_logo"
+            android:layout_below="@id/see_more_date1_logo"
             android:layout_toLeftOf="@id/see_more_people_logo"
             android:text="@string/one_day_tour"
             android:layout_marginTop="6dp"

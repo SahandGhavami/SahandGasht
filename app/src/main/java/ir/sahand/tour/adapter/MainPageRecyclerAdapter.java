@@ -50,6 +50,9 @@ public class MainPageRecyclerAdapter extends RecyclerView.Adapter<MainPageRecycl
         holder.tour_date.setText(
                 Utils.convertTimestampToHumanReadableString(tourModelList.get(position).getTour_date())
         );
+        holder.tour_return_date.setText(
+                Utils.convertTimestampToHumanReadableString(tourModelList.get(position).getTour_return_date())
+        );
         holder.tour_number.setText(tourModelList.get(position).getTour_number()+" نفر");
         //String photo_url = tourDetailsList.get(position).getTour_photo();
 
@@ -90,6 +93,7 @@ public class MainPageRecyclerAdapter extends RecyclerView.Adapter<MainPageRecycl
         private TextView tour_name;
         private TextView tour_cost;
         private TextView tour_date;
+        private TextView tour_return_date;
         private TextView tour_number;
         private ImageView tour_img;
             public MyViewHolder(View itemView) {
@@ -98,6 +102,7 @@ public class MainPageRecyclerAdapter extends RecyclerView.Adapter<MainPageRecycl
                 tour_name = (TextView) itemView.findViewById(R.id.tour_name_cardview);
                 tour_cost = (TextView) itemView.findViewById(R.id.cost_tour_cardview);
                 tour_date = (TextView) itemView.findViewById(R.id.date_tour_cardview);
+                tour_return_date = (TextView) itemView.findViewById(R.id.return_date_tour_cardview);
                 tour_number = (TextView) itemView.findViewById(R.id.number_tour_cardview);
                 tour_img = (ImageView) itemView.findViewById(R.id.tour_image_cardview);
             }

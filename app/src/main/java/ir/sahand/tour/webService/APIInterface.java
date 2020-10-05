@@ -18,6 +18,9 @@ public interface APIInterface {
     @GET("v1/Api.php?apicall=gettour")
     Call<ToursResponse> getTour(@Query("key") String keyword);
 
+    @GET("v1/Api.php?apicall=gettoursbyname")
+    Call<ToursResponse> getToursByName(@Query("key") String keyword);
+
     @GET("v1/Api.php?apicall=gettourbyid")
     Call<TourResponse> getTourById(@Query("id") int id);
 
