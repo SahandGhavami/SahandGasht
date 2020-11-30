@@ -19,7 +19,7 @@ public interface APIInterface {
     Call<ToursResponse> getTour(@Query("key") String keyword);
 
     @GET("v1/Api.php?apicall=gettoursbyname")
-    Call<ToursResponse> getToursByName(@Query("key") String keyword);
+    Call<ToursResponse> getToursByName(@Query("name") String keyword);
 
     @GET("v1/Api.php?apicall=gettourbyid")
     Call<TourResponse> getTourById(@Query("id") int id);
