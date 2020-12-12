@@ -33,6 +33,7 @@ public class SeeMore extends AppCompatActivity {
     private ImageView back_btn;
     private List<TourModel> tourModelList;
     private TextView tour_category;
+    private TextView tour_numbers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class SeeMore extends AppCompatActivity {
         setContentView(R.layout.activity_seemore);
         //InputStream inputStream = getResources().openRawResource(R.raw.one_day_tour);
         toursRequest("");
+        tour_numbers = (TextView) findViewById (R.id.see_more_tour_size);
         tour_category = (TextView) findViewById(R.id.tour_category);
         Bundle bundle = getIntent().getExtras();
         String tour_category_text = bundle.getString("Tour_category");
@@ -100,6 +102,8 @@ public class SeeMore extends AppCompatActivity {
             public void onResponse(Call<ToursResponse> call, Response<ToursResponse> response) {
                 if (response.isSuccessful()) {
                     List<TourModel> tours = response.body().getTours();
+                    int size= tours.size();
+                    tour_numbers.setText(  size+"تور به شما پیشنهاد داده شده است.");
                     recyclerSetting(tours);
                 }
             }

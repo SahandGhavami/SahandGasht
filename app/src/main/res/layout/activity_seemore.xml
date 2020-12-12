@@ -35,6 +35,7 @@
             android:layout_marginTop="35dp" />
 
         <TextView
+            android:id="@+id/see_more_tour_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="۳۷ تور به شما پیشنهاد داده شده است."
