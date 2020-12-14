@@ -12,45 +12,79 @@
         android:src="@drawable/logo"
         android:layout_centerInParent="true"
         android:layout_marginBottom="80dp"
-        android:layout_above="@id/signup_email_insert" />
+        android:layout_above="@id/signup_name_insert" />
 
     <EditText
-        android:id="@+id/signup_email_insert"
+        android:textDirection="rtl"
+        android:id="@+id/signup_name_insert"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="44dp"
         android:layout_marginStart="25dp"
+
         android:layout_marginEnd="25dp"
-        android:layout_centerInParent="true"
-        android:hint="abcd@gmail.com"
+        android:layout_centerVertical="true"
+        android:hint="نام"
         android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:inputType="textEmailAddress"
         android:fontFamily="@font/iransansweb_fanum_medium"
         android:background="@drawable/search_style" />
 
     <EditText
-        android:id="@+id/signup_password_insert"
+        android:textDirection="rtl"
+        android:id="@+id/signup_lname_insert"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="44dp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/search_style"
         android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:fontFamily="@font/iransansweb_fanum_medium"
-        android:hint="password"
+        android:hint="نام خانوادگی"
+        android:layout_below="@id/signup_name_insert"/>
+
+    <EditText
+        android:id="@+id/signup_email_insert"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/search_style"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:fontFamily="@font/iransansweb_fanum_medium"
+        android:hint="ایمیل : abv@gmail.com"
+        android:layout_below="@id/signup_lname_insert"/>
+
+    <EditText
+        android:id="@+id/signup_password_insert"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/search_style"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:fontFamily="@font/iransansweb_fanum_medium"
+        android:hint="پسورد"
         android:layout_below="@id/signup_email_insert"/>
 
     <EditText
-        android:id="@+id/signup_name_insert"
+        android:id="@+id/signup_phone_number_insert"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="44dp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/search_style"
         android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:fontFamily="@font/iransansweb_fanum_medium"
-        android:hint="name"
+        android:hint="شماره تلفن"
         android:layout_below="@id/signup_password_insert"/>
 
     <Button
@@ -63,6 +97,6 @@
         android:textSize="20sp"
         android:layout_margin="25dp"
         android:fontFamily="@font/iransans_fanum_bold"
-        android:layout_below="@id/signup_name_insert"/>
+        android:layout_below="@id/signup_phone_number_insert"/>
 
 </RelativeLayout>

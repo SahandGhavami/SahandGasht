@@ -4,6 +4,9 @@
     android:layout_height="wrap_content"
     android:layout_width="wrap_content">
 
+    <item android:id="@+id/my_reserved_tours"
+        android:title="تورهای رزرو شده" />
+
     <item android:id="@+id/my_tours"
         android:title="تورهای من" />
 

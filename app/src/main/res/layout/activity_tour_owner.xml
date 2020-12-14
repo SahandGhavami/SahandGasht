@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_home_page"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/activity_tour_owner_image"
+        android:layout_width="match_parent"
+        android:layout_height="268dp"
+        android:src="@drawable/background_home_page_edit"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:scaleType="fitXY"/>
+
+    <ImageView
+        android:id="@+id/homepage_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="25dp"
+        android:src="@drawable/sahandgasht"/>
+
+    <TextView
+        android:id="@+id/mainpage_username"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_marginStart="25dp"
+        android:drawableLeft="@drawable/ic_keyboard_arrow_down_black_24dp"
+        android:text="کاربر"
+        android:textColor="@color/purple"
+        android:fontFamily="@font/iransans_fanum_bold" />
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/iransansweb_fanum_medium"
+        android:layout_below="@id/homepage_image"
+        android:textColor="@color/purple"
+        android:text="تور گردشگریت رو انتخاب کن"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="25dp"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/iransansweb_fanum_medium"
+        android:layout_below="@id/txt"
+        android:textColor="@color/purple"
+        android:text="بعدش رو بسپار به ما"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="25dp"
+        android:textSize="15sp"/>
+
+    <RelativeLayout
+        android:id="@+id/activity_tour_owner_layer"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:layoutDirection="rtl"
+        android:layout_below="@+id/activity_tour_owner_image">
+
+        <TextView
+            android:id="@+id/activity_tour_owner_list_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="نام تور"
+            android:textSize="16sp"
+            android:textColor="@color/whiteDark"
+            android:fontFamily="@font/iransans_fanum_bold"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/activity_tour_owner_list_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تعداد رزرو شده"
+            android:textSize="16sp"
+            android:textColor="@color/whiteDark"
+            android:fontFamily="@font/iransans_fanum_bold"
+            android:layout_margin="10dp"
+            android:layout_toLeftOf="@+id/activity_tour_owner_list_name"/>
+
+        <TextView
+            android:id="@+id/activity_tour_owner_list_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تاریخ رفت"
+            android:textSize="16sp"
+            android:textColor="@color/whiteDark"
+            android:fontFamily="@font/iransans_fanum_bold"
+            android:layout_margin="10dp"
+            android:layout_toLeftOf="@+id/activity_tour_owner_list_number"/>
+
+        <TextView
+            android:id="@+id/activity_tour_owner_list_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ویرایش"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/whiteDark"
+            android:fontFamily="@font/iransans_fanum_bold"
+            android:layout_margin="10dp"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/activity_tour_owner"
+        android:layoutDirection="rtl"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_tour_owner_layer"/>
+</RelativeLayout>

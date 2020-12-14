@@ -32,7 +32,7 @@ public interface APIInterface {
 
     @POST("v1/Api.php?apicall=adduser")
     @FormUrlEncoded
-    Call<SignupResponse> registerUser(@Field("user_name") String name , @Field("user_password")String password , @Field("user_email") String email);
+    Call<SignupResponse> registerUser(@Field("user_name") String name , @Field("user_password")String password , @Field("user_email") String email , @Field("user_lname") String lname , @Field("user_phone_number") String phone_number);
 
     @POST("v1/Api.php?apicall=login")
     @FormUrlEncoded

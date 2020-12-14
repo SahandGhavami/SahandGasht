@@ -22,6 +22,10 @@ public class SignUpFragment extends Fragment {
     private EditText signup_email;
     private EditText signup_password;
     private EditText signup_name;
+    private EditText signup_lname;
+    private EditText signup_phone_number;
+
+
 
     @Nullable
     @Override
@@ -31,6 +35,9 @@ public class SignUpFragment extends Fragment {
         signup_email = (EditText) view.findViewById (R.id.signup_email_insert);
         signup_password = (EditText) view.findViewById (R.id.signup_password_insert);
         signup_name = (EditText) view.findViewById (R.id.signup_name_insert);
+        signup_lname = (EditText) view.findViewById (R.id.signup_lname_insert);
+        signup_phone_number = (EditText) view.findViewById (R.id.signup_phone_number_insert);
+
 
         signup_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,16 +45,19 @@ public class SignUpFragment extends Fragment {
                 final String user_email = signup_email.getText().toString().trim();
                 final String user_password = signup_password.getText().toString().trim();
                 final String user_name = signup_name.getText().toString().trim();
-                registerUsers(user_name , user_password , user_email);
+                final String user_lname = signup_lname.getText().toString().trim();
+                final String user_phone_number = signup_phone_number.getText().toString().trim();
+
+                registerUsers(user_name , user_password , user_email , user_lname , user_phone_number);
             }
         });
 
         return view;
     }
 
-    public void registerUsers(String name , String password , String email){
+    public void registerUsers(String name , String password , String email , String lname , String phone_number){
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
-        Call<SignupResponse> call = apiInterface.registerUser(name, password, email);
+        Call<SignupResponse> call = apiInterface.registerUser(name, password, email , lname , phone_number);
         call.enqueue(new Callback<SignupResponse>() {
             @Override
             public void onResponse(Call<SignupResponse> call, Response<SignupResponse> response) {

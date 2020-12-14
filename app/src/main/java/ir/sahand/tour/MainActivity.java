@@ -173,9 +173,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.my_tours :
+            case R.id.my_reserved_tours :
                 Intent intent = new Intent(getApplicationContext() , MyTours.class);
                 startActivity(intent);
+                break;
+            case R.id.my_tours :
+                Intent intent2 = new Intent(getApplicationContext() , TourOwner.class);
+                startActivity(intent2);
                 break;
             case R.id.logout :
                 AppPreferenceTools.getInstance(getApplicationContext()).removeAllPrefs();
