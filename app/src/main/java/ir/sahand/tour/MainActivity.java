@@ -82,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
           startActivity(new Intent(this , FirstPageActivity.class));
           finish();
         }
+
+        /*String token;
+        token = AppPreferenceTools.getInstance().getToken();
+        Log.d("Token is : " , token);*/
     }
 
     @Override

@@ -116,6 +116,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/activity_tour_owner"
+        android:layout_margin="4dp"
         android:layoutDirection="rtl"
         android:orientation="vertical"
         android:layout_width="match_parent"

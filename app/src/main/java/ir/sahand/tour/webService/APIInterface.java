@@ -23,9 +23,12 @@ public interface APIInterface {
 
     @GET("v1/Api.php?apicall=gettourbyid")
     Call<TourResponse> getTourById(@Query("id") int id);
-
+    //avaz she be myreservedtours
     @GET("v1/Api.php?apicall=mytours")
     Call<ToursResponse> getmytour();
+
+    @GET("v1/Api.php?apicall=createdtours")
+    Call<ToursResponse> getMyCreatedTours();
 
     @GET("v1/Api.php?apicall=me")
     Call<UserResponse> getUser();
