@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_welcome_page"
+    android:layoutDirection="rtl">
+
+    <ImageView
+        android:id="@+id/back_button_passengers"
+        android:src="@drawable/ic_arrow_back"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"/>
+
+    <TextView
+        android:id="@+id/tour_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="نام تور"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/iransans_fanum_bold"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:layout_marginTop="32dp" />
+
+    <TextView
+        android:id="@+id/passengers_reserved_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="37 نفر این تور را رزرو کرده اند."
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/iransansweb_fanum_medium"
+        android:layout_below="@id/tour_name"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/passengers_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:layout_below="@+id/passengers_reserved_size"
+        android:layout_marginVertical="16dp"
+        />
+
+
+    </RelativeLayout>

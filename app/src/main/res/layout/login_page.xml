@@ -18,12 +18,12 @@
             android:id="@+id/login_email_insert"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             android:layout_centerInParent="true"
             android:text="sahand.fc@gmail.com"
             android:hint="abcd@gmail.com"
-            android:paddingStart="10dp"
+            android:paddingStart="8dp"
             android:fontFamily="@font/iransansweb_fanum_medium"
             android:background="@drawable/search_style" />
 
@@ -31,12 +31,12 @@
             android:id="@+id/login_password_insert"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             android:text="123456789"
             android:background="@drawable/search_style"
-            android:paddingStart="10dp"
+            android:paddingStart="8dp"
             android:fontFamily="@font/iransansweb_fanum_medium"
             android:hint="password"
             android:layout_below="@id/login_email_insert"/>
@@ -49,8 +49,24 @@
             android:text="ثبت"
             android:textColor="@color/whiteDark"
             android:textSize="20sp"
-            android:layout_margin="25dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             android:fontFamily="@font/iransans_fanum_bold"
             android:layout_below="@id/login_password_insert"/>
+
+        <TextView
+            android:id="@+id/login_to_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_submit_button"
+            android:text="می‌خواهم عضو شوم."
+            android:textSize="15sp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/iransans_fanum_bold"
+            android:textColor="@color/whiteDark"
+            android:gravity="center"
+            android:layoutDirection="rtl"
+            android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

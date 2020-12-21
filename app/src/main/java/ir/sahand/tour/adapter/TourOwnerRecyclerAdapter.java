@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import ir.sahand.tour.PassengersActivity;
 import ir.sahand.tour.R;
-import ir.sahand.tour.TourPage;
 import ir.sahand.tour.Utils;
 import ir.sahand.tour.model.TourModel;
 
@@ -38,24 +38,24 @@ public class TourOwnerRecyclerAdapter extends RecyclerView.Adapter<TourOwnerRecy
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TourOwnerRecyclerAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TourOwnerRecyclerAdapter.MyViewHolder holder, final int position) {
          holder.tour_name.setText(tourModelList.get(position).getTour_name());
          holder.tour_date.setText(Utils.convertTimestampToHumanReadableString(tourModelList.get(position).getTour_date()));
-         holder.tour_reserved_number.setText(tourModelList.get(position).getTour_number() + " نفر رزرو کرده‌");
+         holder.tour_reserved_number.setText(tourModelList.get(position).getTour_number() + " نفر رزرو کرده‌ اند.");
          holder.tour_edit.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
                  Toast.makeText(mContext, "Worked!", Toast.LENGTH_SHORT).show();
              }
          });
-         /*holder.cardView.setOnClickListener(new View.OnClickListener() {
+         holder.cardView.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 Intent intent = new Intent(mContext, TourPage.class);
+                 Intent intent = new Intent(mContext, PassengersActivity.class);
                  intent.putExtra("Tour_id", tourModelList.get(position).getId());
                  mContext.startActivity(intent);
              }
-         });*/
+         });
      }
 
     @Override

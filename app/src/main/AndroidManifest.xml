@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TourOwner"></activity>
+        <activity android:name=".PassengersActivity"></activity>
+        <activity android:name=".TourOwner" />
         <activity android:name=".MyTours" />
         <activity android:name=".MakingTour" />
         <activity android:name=".FirstPageActivity" />

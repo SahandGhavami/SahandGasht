@@ -104,7 +104,7 @@
             android:id="@+id/activity_tour_owner_list_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ویرایش"
+            android:text="لیست مسافران"
             android:gravity="center"
             android:textSize="16sp"
             android:textColor="@color/whiteDark"
