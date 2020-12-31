@@ -4,15 +4,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/making_tour_activity_image"
-        android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:scaleType="fitXY" />
+    <ImageView
+        android:id="@+id/making_tour_activity_image1"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:scaleType="fitXY"
+        android:background="@drawable/add_image"
+        android:layout_alignParentStart="true"
+        android:layout_margin="8dp"/>
+
+    <ImageView
+        android:id="@+id/making_tour_activity_image2"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:scaleType="fitXY"
+        android:background="@drawable/add_image"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp"/>
+
+    <ImageView
+        android:id="@+id/making_tour_activity_image3"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:scaleType="fitXY"
+        android:background="@drawable/add_image"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="8dp"/>
+
+    <ImageView
+        android:id="@+id/making_tour_activity_image4"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:scaleType="fitXY"
+        android:background="@drawable/add_image"
+        android:layout_alignParentStart="true"
+        android:layout_margin="8dp"
+        android:layout_below="@id/making_tour_activity_image1"/>
+
+    <ImageView
+        android:id="@+id/making_tour_activity_image5"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:scaleType="fitXY"
+        android:background="@drawable/add_image"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp"
+        android:layout_below="@id/making_tour_activity_image2"/>
+
+    <ImageView
+        android:id="@+id/making_tour_activity_image6"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:scaleType="fitXY"
+        android:background="@drawable/add_image"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="8dp"
+        android:layout_below="@id/making_tour_activity_image3"/>
 
     <RelativeLayout
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="260dp"
         android:background="@drawable/layout_style"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -37,6 +88,7 @@
             android:background="@drawable/textview_style"
             android:fontFamily="@font/iransansweb_fanum_medium"
             android:hint="موقعیت مکانی"
+            android:textSize="15sp"
             android:gravity="center|bottom"
             android:textColor="@color/darkGreen"
             android:drawableRight="@drawable/location"
@@ -54,6 +106,7 @@
             android:fontFamily="@font/iransansweb_fanum_medium"
             android:textColor="@color/white"
             android:hint="ظرفیت تور"
+            android:textSize="15sp"
             android:layout_below="@id/making_tour_activity_name"
             android:layout_alignParentStart="true"
             android:layout_marginStart="25dp"
@@ -65,6 +118,7 @@
             android:layout_height="27dp"
             android:background="@drawable/textview_style"
             android:hint="قیمت تور"
+            android:textSize="15sp"
             android:gravity="center|bottom"
             android:drawableRight="@drawable/money"
             android:fontFamily="@font/iransansweb_fanum_medium"
@@ -80,6 +134,7 @@
             android:layout_height="27dp"
             android:background="@drawable/textview_style"
             android:hint="تاریخ تور"
+            android:textSize="15sp"
             android:drawableRight="@drawable/date"
             android:gravity="center|bottom"
             android:fontFamily="@font/iransansweb_fanum_medium"

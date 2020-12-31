@@ -42,7 +42,7 @@ public class TourPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tour_activity);
+        setContentView(R.layout.activity_tour);
 
         submit = (Button) findViewById(R.id.tour_activity_button);
         back_btn = (ImageView) findViewById(R.id.back_button_tourpage);

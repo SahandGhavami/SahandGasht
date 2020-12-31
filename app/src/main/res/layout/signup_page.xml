@@ -20,7 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:layout_marginStart="24dp"
-
         android:layout_marginEnd="24dp"
         android:layout_centerVertical="true"
         android:hint="نام"
@@ -85,22 +84,23 @@
         android:paddingEnd="8dp"
         android:fontFamily="@font/iransansweb_fanum_medium"
         android:hint="شماره تلفن"
+        android:maxLength="11"
         android:layout_below="@id/signup_password_insert"/>
 
     <Button
         android:id="@+id/signup_submit_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="44dp"
         android:background="@drawable/reserve_button_style"
         android:text="ثبت"
         android:textColor="@color/whiteDark"
         android:textSize="20sp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
         android:fontFamily="@font/iransans_fanum_bold"
         android:layout_below="@id/signup_phone_number_insert"/>
-    
+
     <TextView
         android:id="@+id/signup_to_login"
         android:layout_width="wrap_content"

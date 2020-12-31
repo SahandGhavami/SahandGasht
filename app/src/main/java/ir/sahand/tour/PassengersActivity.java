@@ -21,7 +21,7 @@ public class PassengersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.passengers);
+        setContentView(R.layout.activity_passengers);
         back_button = (ImageView) findViewById (R.id.back_button_passengers);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -10,7 +10,11 @@
     <item android:id="@+id/my_tours"
         android:title="تورهای من" />
 
+    <item android:id="@+id/make_tours"
+        android:title="ساخت تور" />
+
     <item android:id="@+id/logout"
         android:title="خروج"/>
+
 
 </menu>

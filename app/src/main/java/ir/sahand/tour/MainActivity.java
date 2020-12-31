@@ -185,6 +185,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent2 = new Intent(getApplicationContext() , TourOwner.class);
                 startActivity(intent2);
                 break;
+            case R.id.make_tours :
+                Intent intent3 = new Intent(getApplicationContext() , MakingTour.class);
+                startActivity(intent3);
+                break;
             case R.id.logout :
                 AppPreferenceTools.getInstance(getApplicationContext()).removeAllPrefs();
                 finish();

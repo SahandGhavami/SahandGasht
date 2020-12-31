@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import ir.sahand.tour.model.SignupResponse;
 import ir.sahand.tour.webService.APIClient;
@@ -24,8 +27,7 @@ public class SignUpFragment extends Fragment {
     private EditText signup_name;
     private EditText signup_lname;
     private EditText signup_phone_number;
-
-
+    private TextView sigup_to_login;
 
     @Nullable
     @Override
@@ -37,7 +39,7 @@ public class SignUpFragment extends Fragment {
         signup_name = (EditText) view.findViewById (R.id.signup_name_insert);
         signup_lname = (EditText) view.findViewById (R.id.signup_lname_insert);
         signup_phone_number = (EditText) view.findViewById (R.id.signup_phone_number_insert);
-
+        sigup_to_login = (TextView) view.findViewById (R.id.signup_to_login);
 
         signup_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +54,16 @@ public class SignUpFragment extends Fragment {
             }
         });
 
+        sigup_to_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginPageFragment loginPageFragment = new LoginPageFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.fragment_holder , loginPageFragment);
+                transaction.commit();
+            }
+        });
         return view;
     }
 
