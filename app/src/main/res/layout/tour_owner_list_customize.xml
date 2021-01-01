@@ -53,10 +53,10 @@
         android:layout_toLeftOf="@+id/tour_owner_list_number"/>
 
     <TextView
-        android:id="@+id/tour_owner_list_edit"
+        android:id="@+id/tour_owner_list_see"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ویرایش"
+        android:text="مشاهده"
         android:gravity="center"
         android:textSize="16sp"
         android:textColor="@color/darkGreen"

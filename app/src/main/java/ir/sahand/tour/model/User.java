@@ -25,6 +25,12 @@ public class User {
         this.user_lname=lname;
         this.user_phone_number=phone_number;
     };
+    public User(int id , String name ,  String lname , String phone_number){
+        this.user_id=id;
+        this.user_name=name;
+        this.user_lname=lname;
+        this.user_phone_number=phone_number;
+    };
 
     public String getUser_lname() {
         return user_lname;

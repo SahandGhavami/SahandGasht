@@ -75,7 +75,7 @@ public class TourOwnerRecyclerAdapter extends RecyclerView.Adapter<TourOwnerRecy
             tour_name = (TextView) itemView.findViewById (R.id.tour_owner_list_name);
             tour_reserved_number = (TextView) itemView.findViewById (R.id.tour_owner_list_number);
             tour_date = (TextView) itemView.findViewById (R.id.tour_owner_list_date);
-            tour_edit = (TextView) itemView.findViewById (R.id.tour_owner_list_edit);
+            tour_edit = (TextView) itemView.findViewById (R.id.tour_owner_list_see);
          }
     }
 }

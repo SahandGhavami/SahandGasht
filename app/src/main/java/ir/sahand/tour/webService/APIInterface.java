@@ -7,6 +7,7 @@ import ir.sahand.tour.model.SignupResponse;
 import ir.sahand.tour.model.TourResponse;
 import ir.sahand.tour.model.ToursResponse;
 import ir.sahand.tour.model.UserResponse;
+import ir.sahand.tour.model.UsersResponse;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -29,6 +30,9 @@ public interface APIInterface {
 
     @GET("v1/Api.php?apicall=createdtours")
     Call<ToursResponse> getMyCreatedTours();
+
+    @GET("v1/Api.php?apicall=getpassengers")
+    Call<UsersResponse> getMyPassengers(@Query("id") int id);
 
     @GET("v1/Api.php?apicall=me")
     Call<UserResponse> getUser();

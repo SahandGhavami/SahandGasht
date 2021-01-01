@@ -65,7 +65,6 @@ public class MyTours extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     protected void recyclerSetting(List<TourModel> tours) {
