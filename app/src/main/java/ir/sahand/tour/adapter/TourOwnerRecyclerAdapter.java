@@ -45,7 +45,9 @@ public class TourOwnerRecyclerAdapter extends RecyclerView.Adapter<TourOwnerRecy
          holder.tour_edit.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 Toast.makeText(mContext, "Worked!", Toast.LENGTH_SHORT).show();
+                 Intent intent = new Intent(mContext, PassengersActivity.class);
+                 intent.putExtra("Tour_id", tourModelList.get(position).getId());
+                 mContext.startActivity(intent);
              }
          });
          holder.cardView.setOnClickListener(new View.OnClickListener() {

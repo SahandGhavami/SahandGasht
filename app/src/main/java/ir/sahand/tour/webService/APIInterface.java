@@ -34,6 +34,9 @@ public interface APIInterface {
     @GET("v1/Api.php?apicall=getpassengers")
     Call<UsersResponse> getMyPassengers(@Query("id") int id);
 
+    @GET("v1/Api.php?apicall=cancellation")
+    Call<ReservationResponse> cancell(@Query("id") int id);
+
     @GET("v1/Api.php?apicall=me")
     Call<UserResponse> getUser();
 

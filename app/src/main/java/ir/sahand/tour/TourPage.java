@@ -96,7 +96,6 @@ public class TourPage extends AppCompatActivity {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this , tour.getImages());
         viewPager.setAdapter(viewPagerAdapter);
 
-
         tv_name.setText(tour.getTour_name());
         tv_cost.setText(Utils.formatMoney(tour.getTour_cost()));
         tv_details.setText(tour.getTour_description());
@@ -107,7 +106,13 @@ public class TourPage extends AppCompatActivity {
 
         if (tour.isHasUserReservedBefore()) {
             submit.setText("قبلا رزرو کرده اید!");
-            submit.setOnClickListener(null);
+            submit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    cancelTour(id);
+                    submit.setText("رزرو کنید");
+                }
+            });
         } else {
             submit.setText("رزرو کنید");
             submit.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +127,26 @@ public class TourPage extends AppCompatActivity {
     private void reserveTour(int id) {
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
         Call<ReservationResponse> call = apiInterface.reserve(id);
+        call.enqueue(new Callback<ReservationResponse>() {
+            @Override
+            public void onResponse(Call<ReservationResponse> call, final Response<ReservationResponse> response) {
+                if (response.isSuccessful()) {
+                    fetchDataFromServer();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ReservationResponse> call, Throwable t) {
+                if (t instanceof IOException) {
+                    Toast.makeText(getApplicationContext(), "Reservation has failed!!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void cancelTour(int id) {
+        APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
+        Call<ReservationResponse> call = apiInterface.cancell(id);
         call.enqueue(new Callback<ReservationResponse>() {
             @Override
             public void onResponse(Call<ReservationResponse> call, final Response<ReservationResponse> response) {
