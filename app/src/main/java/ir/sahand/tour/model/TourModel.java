@@ -37,6 +37,7 @@ public class TourModel implements Comparable<TourModel> {
     private String reserved_date;
     @SerializedName("has_user_reserved_before")
     private boolean hasUserReservedBefore;
+
     public TourModel(String tour_name, String tour_cost, String tour_date, String[] images, String tour_number, String tour_description, String tour_details, String tour_gallery) {
         this.tour_name = tour_name;
         this.tour_cost = tour_cost;
@@ -166,11 +167,11 @@ public class TourModel implements Comparable<TourModel> {
         this.tour_return_date = tour_return_date;
     }
 
-
     @Override
     public int compareTo(@NonNull TourModel o) {
         return this.id - o.getId();
     }
+
     public static Comparator<TourModel> date = new Comparator<TourModel>() {
         @Override
         public int compare(TourModel t1, TourModel t2) {

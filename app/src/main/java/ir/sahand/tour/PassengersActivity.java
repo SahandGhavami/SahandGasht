@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -26,11 +27,13 @@ public class PassengersActivity extends AppCompatActivity {
     private PassengersRecyclerAdapter adapter;
     private ImageView back_button;
     private int id;
+    private TextView reserved_count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passengers);
+        reserved_count = (TextView) findViewById (R.id.passengers_reserved_size);
         back_button = (ImageView) findViewById (R.id.back_button_passengers);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +44,8 @@ public class PassengersActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         id = bundle.getInt("Tour_id");
+
+
 
        myPassengersRequest(id);
     }
@@ -53,6 +58,7 @@ public class PassengersActivity extends AppCompatActivity {
             public void onResponse(Call<UsersResponse> call, final Response<UsersResponse> response) {
                 if (response.isSuccessful()) {
                     List<User> users = response.body().getUsers();
+                    reserved_count.setText(users.size() + "نفر رزرو کرده اند.");
                     recyclerSetting(users);
                 }
             }

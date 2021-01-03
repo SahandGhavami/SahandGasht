@@ -76,40 +76,46 @@
             android:textSize="16sp"
             android:textColor="@color/whiteDark"
             android:fontFamily="@font/iransans_fanum_bold"
-            android:layout_margin="10dp"/>
-
-        <TextView
-            android:id="@+id/activity_tour_owner_list_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="تعداد رزرو شده"
-            android:textSize="16sp"
-            android:textColor="@color/whiteDark"
-            android:fontFamily="@font/iransans_fanum_bold"
-            android:layout_margin="10dp"
-            android:layout_toLeftOf="@+id/activity_tour_owner_list_name"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="8dp"/>
 
         <TextView
             android:id="@+id/activity_tour_owner_list_date"
-            android:layout_width="wrap_content"
+            android:layout_width="96dp"
             android:layout_height="wrap_content"
             android:text="تاریخ رفت"
+            android:gravity="center"
             android:textSize="16sp"
             android:textColor="@color/whiteDark"
             android:fontFamily="@font/iransans_fanum_bold"
-            android:layout_margin="10dp"
-            android:layout_toLeftOf="@+id/activity_tour_owner_list_number"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_toRightOf="@+id/activity_tour_owner_list_return_date"/>
+
+        <TextView
+            android:id="@+id/activity_tour_owner_list_return_date"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:text="تاریخ برگشت"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/whiteDark"
+            android:fontFamily="@font/iransans_fanum_bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_toRightOf="@+id/activity_tour_owner_list_edit"/>
 
         <TextView
             android:id="@+id/activity_tour_owner_list_edit"
-            android:layout_width="wrap_content"
+            android:layout_width="96dp"
             android:layout_height="wrap_content"
             android:text="لیست مسافران"
             android:gravity="center"
             android:textSize="16sp"
             android:textColor="@color/whiteDark"
             android:fontFamily="@font/iransans_fanum_bold"
-            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
             android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>

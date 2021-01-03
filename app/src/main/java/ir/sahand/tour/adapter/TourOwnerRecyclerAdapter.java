@@ -41,7 +41,7 @@ public class TourOwnerRecyclerAdapter extends RecyclerView.Adapter<TourOwnerRecy
     public void onBindViewHolder(@NonNull TourOwnerRecyclerAdapter.MyViewHolder holder, final int position) {
          holder.tour_name.setText(tourModelList.get(position).getTour_name());
          holder.tour_date.setText(Utils.convertTimestampToHumanReadableString(tourModelList.get(position).getTour_date()));
-         holder.tour_reserved_number.setText(tourModelList.get(position).getTour_number() + " نفر رزرو کرده‌ اند.");
+         holder.tour_return_date.setText(Utils.convertTimestampToHumanReadableString(tourModelList.get(position).getTour_return_date()));
          holder.tour_edit.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
@@ -68,14 +68,14 @@ public class TourOwnerRecyclerAdapter extends RecyclerView.Adapter<TourOwnerRecy
     public class MyViewHolder extends RecyclerView.ViewHolder {
          private CardView cardView;
          private TextView tour_name;
-         private TextView tour_reserved_number;
+         private TextView tour_return_date;
          private TextView tour_date;
          private TextView tour_edit;
          public MyViewHolder(View itemView) {
             super(itemView);
             cardView = (CardView) itemView.findViewById (R.id.tour_owner_card_view);
             tour_name = (TextView) itemView.findViewById (R.id.tour_owner_list_name);
-            tour_reserved_number = (TextView) itemView.findViewById (R.id.tour_owner_list_number);
+            tour_return_date = (TextView) itemView.findViewById (R.id.tour_owner_list_return_date);
             tour_date = (TextView) itemView.findViewById (R.id.tour_owner_list_date);
             tour_edit = (TextView) itemView.findViewById (R.id.tour_owner_list_see);
          }
