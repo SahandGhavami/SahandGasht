@@ -1,4 +1,5 @@
 package ir.sahand.tour.webService;
+
 import java.util.Date;
 
 import ir.sahand.tour.model.ReservationResponse;
@@ -24,6 +25,7 @@ public interface APIInterface {
 
     @GET("v1/Api.php?apicall=gettourbyid")
     Call<TourResponse> getTourById(@Query("id") int id);
+
     //avaz she be myreservedtours
     @GET("v1/Api.php?apicall=mytours")
     Call<ToursResponse> getmytour();
@@ -42,17 +44,19 @@ public interface APIInterface {
 
     @POST("v1/Api.php?apicall=adduser")
     @FormUrlEncoded
-    Call<SignupResponse> registerUser(@Field("user_name") String name , @Field("user_password")String password , @Field("user_email") String email , @Field("user_lname") String lname , @Field("user_phone_number") String phone_number);
+    Call<SignupResponse> registerUser(@Field("user_name") String name, @Field("user_password") String password, @Field("user_email") String email, @Field("user_lname") String lname, @Field("user_phone_number") String phone_number);
+
+    @POST("v1/Api.php?apicall=creattour")
+    @FormUrlEncoded
+    Call<TourResponse> createTour(@Field("name") String name, @Field("location") String location, @Field("capacity") String number, @Field("date") String date, @Field("return_date") String return_date, @Field("cost") String cost, @Field("details") String details, @Field("description") String description);
 
     @POST("v1/Api.php?apicall=login")
     @FormUrlEncoded
-    Call<SignupResponse> loginUser(@Field("user_email") String email , @Field("user_password")String password);
+    Call<SignupResponse> loginUser(@Field("user_email") String email, @Field("user_password") String password);
 
     @POST("v1/Api.php?apicall=reservation")
     @FormUrlEncoded
-    Call<ReservationResponse> reserve (@Field("tour_id")int tour_id );
-
-
+    Call<ReservationResponse> reserve(@Field("tour_id") int tour_id);
 
 
 }
