@@ -1,10 +1,13 @@
 package ir.sahand.tour;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
@@ -45,43 +48,27 @@ public class MainActivity extends AppCompatActivity {
             username = (TextView) findViewById(R.id.mainpage_username);
             registerForContextMenu(username);
             toursRequest("");
-            TextView see_more = (TextView) findViewById(R.id.list_more);
-            see_more.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(), SeeMore.class);
-                    offered_tv = (TextView) findViewById(R.id.offered_tour_tv);
-                    String text = (String) offered_tv.getText();
-                    intent.putExtra("Tour_category", text);
-                    startActivity(intent);
-                }
-            });
-            TextView see_more2 = (TextView) findViewById(R.id.list_more_2);
-            see_more2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(), SeeMore.class);
-                    special_tv = (TextView) findViewById(R.id.special_tour_tv);
-                    String text = (String) special_tv.getText();
-                    intent.putExtra("Tour_category", text);
-                    startActivity(intent);
-                }
-            });
-            TextView see_more3 = (TextView) findViewById(R.id.list_more_3);
-            see_more3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(), SeeMore.class);
-                    one_day_tv = (TextView) findViewById(R.id.one_day_tour_tv);
-                    String text = (String) one_day_tv.getText();
-                    intent.putExtra("Tour_category", text);
-                    startActivity(intent);
-                }
-            });
         } else {
           startActivity(new Intent(this , FirstPageActivity.class));
           finish();
         }
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) findViewById (R.id.searchview);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Intent intent = new Intent(getApplicationContext(), SeeMore.class);
+                intent.putExtra("query", query);
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
         /*String token;
         token = AppPreferenceTools.getInstance().getToken();

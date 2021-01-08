@@ -3,7 +3,6 @@ package ir.sahand.tour;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -16,32 +15,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.alirezaafkar.sundatepicker.DatePicker;
-import com.alirezaafkar.sundatepicker.components.JDF;
 import com.alirezaafkar.sundatepicker.interfaces.DateSetListener;
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
-
-import ir.sahand.tour.model.TourModel;
 import ir.sahand.tour.model.TourResponse;
-import ir.sahand.tour.model.ToursResponse;
 import ir.sahand.tour.webService.APIClient;
 import ir.sahand.tour.webService.APIInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static ir.sahand.tour.R.id.making_tour_activity_date;
-import static ir.sahand.tour.R.id.making_tour_activity_return_date;
-
 
 public class MakingTour extends AppCompatActivity implements DateSetListener {
     private static final int REQUEST_CODE_CONTENT = 1000;
@@ -64,7 +49,6 @@ public class MakingTour extends AppCompatActivity implements DateSetListener {
     private ImageView[] IMG = {img1, img2, img3, img4, img5, img6};
     private String selected_date;
     private String selected_return_date;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

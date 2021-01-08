@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,11 +13,11 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="268dp"
-            android:src="@drawable/background_home_page_edit"
-            android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:src="@drawable/background_home_page_edit" />
 
         <ImageView
             android:id="@+id/homepage_image"
@@ -34,43 +33,55 @@
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
             android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
             android:drawableLeft="@drawable/ic_keyboard_arrow_down_black_24dp"
+            android:fontFamily="@font/iransans_fanum_bold"
+            android:gravity="center"
             android:text="کاربر"
-            android:textColor="@color/purple"
-            android:fontFamily="@font/iransans_fanum_bold" />
+            android:textColor="@color/purple" />
 
         <TextView
             android:id="@+id/txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/iransansweb_fanum_medium"
             android:layout_below="@id/homepage_image"
-            android:textColor="@color/purple"
-            android:text="تور گردشگریت رو انتخاب کن"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="25dp"
+            android:fontFamily="@font/iransansweb_fanum_medium"
+            android:text="تور گردشگریت رو انتخاب کن"
+            android:textColor="@color/purple"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/iransansweb_fanum_medium"
             android:layout_below="@id/txt"
-            android:textColor="@color/purple"
-            android:text="بعدش رو بسپار به ما"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="25dp"
-            android:textSize="15sp"/>
+            android:fontFamily="@font/iransansweb_fanum_medium"
+            android:text="بعدش رو بسپار به ما"
+            android:textColor="@color/purple"
+            android:textSize="15sp" />
+
+        <android.support.v7.widget.SearchView
+            android:id="@+id/searchview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="260dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/search_style"
+            app:iconifiedByDefault="false"
+            app:queryHint="جست و جو میان تورها ..." />
 
         <LinearLayout
             android:id="@+id/offered_tour"
             android:layout_width="match_parent"
             android:layout_height="380dp"
+            android:layout_marginTop="300dp"
             android:background="@drawable/layout_style"
-            android:layout_marginTop="270dp"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -81,44 +92,33 @@
                     android:id="@+id/offered_tour_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:gravity="center_vertical"
-                    android:text="@string/offered_tour"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/iransans_fanum_bold"
-                    android:textColor="@color/darkGreen"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="24dp" />
-
-                <TextView
-                    android:id="@+id/list_more"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:gravity="center_vertical"
-                    android:text="@string/list_more"
-                    android:textSize="15sp"
+                    android:layout_marginRight="24dp"
                     android:fontFamily="@font/iransans_fanum_bold"
-                    android:textColor="@color/green"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="24dp" />
+                    android:gravity="center_vertical"
+                    android:text="@string/offered_tour"
+                    android:textColor="@color/darkGreen"
+                    android:textSize="20sp" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/offered_tour_recycler"
-                    android:layoutDirection="rtl"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="64dp">
+                    android:layout_marginTop="64dp"
+                    android:layoutDirection="rtl">
 
                 </android.support.v7.widget.RecyclerView>
             </RelativeLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/special_tour"
             android:layout_width="match_parent"
             android:layout_height="380dp"
-            android:background="@color/darkGreen"
             android:layout_below="@id/offered_tour"
+            android:background="@color/darkGreen"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -129,41 +129,29 @@
                     android:id="@+id/special_tour_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/special_tours"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="10dp" />
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/special_tours" />
 
                 <TextView
                     android:id="@+id/special_tour_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:text="@string/special_tour"
-                    android:gravity="center_vertical"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/iransans_fanum_bold"
-                    android:textColor="@color/darkGreen"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="15dp"
-                    android:layout_marginRight="24dp" />
-
-                <TextView
-                    android:id="@+id/list_more_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:gravity="center_vertical"
-                    android:text="@string/list_more"
-                    android:textSize="15sp"
+                    android:layout_marginRight="24dp"
                     android:fontFamily="@font/iransans_fanum_bold"
-                    android:textColor="@color/greenLight"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="24dp" />
+                    android:gravity="center_vertical"
+                    android:text="@string/special_tour"
+                    android:textColor="@color/darkGreen"
+                    android:textSize="20sp" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/special_tour_recycler"
-                    android:layoutDirection="rtl"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="64dp">
+                    android:layout_marginTop="64dp"
+                    android:layoutDirection="rtl">
 
                 </android.support.v7.widget.RecyclerView>
 
@@ -171,11 +159,12 @@
             </RelativeLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="380dp"
-            android:background="@color/white"
             android:layout_below="@id/special_tour"
+            android:background="@color/white"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -186,34 +175,21 @@
                     android:id="@+id/one_day_tour_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:gravity="center_vertical"
-                    android:text="@string/one_day_tour"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/iransans_fanum_bold"
-                    android:textColor="@color/darkGreen"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="24dp" />
-
-                <TextView
-                    android:id="@+id/list_more_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:gravity="center_vertical"
-                    android:text="@string/list_more"
-                    android:textSize="15sp"
+                    android:layout_marginRight="24dp"
                     android:fontFamily="@font/iransans_fanum_bold"
-                    android:textColor="@color/green"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="24dp" />
+                    android:gravity="center_vertical"
+                    android:text="@string/one_day_tour"
+                    android:textColor="@color/darkGreen"
+                    android:textSize="20sp" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/oneday_tour_recycler"
-                    android:layoutDirection="rtl"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="64dp">
-                </android.support.v7.widget.RecyclerView>
+                    android:layout_marginTop="64dp"
+                    android:layoutDirection="rtl"></android.support.v7.widget.RecyclerView>
 
             </RelativeLayout>
         </LinearLayout>

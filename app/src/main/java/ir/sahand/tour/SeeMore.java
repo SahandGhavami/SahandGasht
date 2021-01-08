@@ -11,11 +11,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
-
 import ir.sahand.tour.adapter.SeeMoreRecyclerAdapter;
 import ir.sahand.tour.model.TourModel;
 import ir.sahand.tour.model.ToursResponse;
@@ -45,6 +43,7 @@ public class SeeMore extends AppCompatActivity {
         tour_category = (TextView) findViewById(R.id.tour_category);
         Bundle bundle = getIntent().getExtras();
         String tour_category_text = bundle.getString("Tour_category");
+        String initialQuery = bundle.getString("query");
         tour_category.setText(tour_category_text);
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) findViewById (R.id.searchview);
@@ -71,6 +70,12 @@ public class SeeMore extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        if (initialQuery != null && initialQuery.length() > 0) {
+            searchView.setQuery(initialQuery, true);
+            tour_category.setText("نتایج جست و جو " );
+            toursSearch(initialQuery);
+        }
     }
 
     private void toursSearch(String key) {
@@ -103,7 +108,7 @@ public class SeeMore extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     List<TourModel> tours = response.body().getTours();
                     int size= tours.size();
-                    tour_numbers.setText(  size+"تور به شما پیشنهاد داده شده است.");
+                    tour_numbers.setText( size+"تور به شما پیشنهاد داده شده است.");
                     recyclerSetting(tours);
                 }
             }
