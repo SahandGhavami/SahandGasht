@@ -178,6 +178,7 @@
                 android:background="@drawable/reserve_button_style"
                 android:layout_margin="15dp"
                 android:layout_below="@+id/tour_activity_description"
+                android:layout_alignParentBottom="true"
                 android:text="@string/reserve_button"
                 android:textColor="@color/white"
                 android:fontFamily="@font/iransans_fanum_bold"

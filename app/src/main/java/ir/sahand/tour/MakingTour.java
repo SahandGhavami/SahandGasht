@@ -230,10 +230,25 @@ public class MakingTour extends AppCompatActivity implements DateSetListener {
                 imageUri = data.getData();
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-                    /*switch (id) {
-                        case
-
-
+                    /*switch () {
+                        case R.id.making_tour_activity_image1 :
+                            img1.setImageBitmap(bitmap);
+                            break;
+                        case R.id.making_tour_activity_image2 :
+                            img2.setImageBitmap(bitmap);
+                            break;
+                        case R.id.making_tour_activity_image3 :
+                            img3.setImageBitmap(bitmap);
+                            break;
+                        case R.id.making_tour_activity_image4 :
+                            img4.setImageBitmap(bitmap);
+                            break;
+                        case R.id.making_tour_activity_image5:
+                            img5.setImageBitmap(bitmap);
+                            break;
+                        case R.id.making_tour_activity_image6 :
+                            img6.setImageBitmap(bitmap);
+                            break;
                     }*/
 
                     /*for (int i = 0; i < 6; i++) {
