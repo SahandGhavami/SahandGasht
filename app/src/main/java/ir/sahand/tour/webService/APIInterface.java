@@ -46,7 +46,7 @@ public interface APIInterface {
     @FormUrlEncoded
     Call<SignupResponse> registerUser(@Field("user_name") String name, @Field("user_password") String password, @Field("user_email") String email, @Field("user_lname") String lname, @Field("user_phone_number") String phone_number);
 
-    @POST("v1/Api.php?apicall=creattour")
+    @POST("v1/Api.php?apicall=createtour")
     @FormUrlEncoded
     Call<TourResponse> createTour(@Field("name") String name, @Field("location") String location, @Field("capacity") String number, @Field("date") String date, @Field("return_date") String return_date, @Field("cost") String cost, @Field("details") String details, @Field("description") String description);
 

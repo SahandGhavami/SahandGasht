@@ -195,6 +195,11 @@ public class MakingTour extends AppCompatActivity implements DateSetListener {
             @Override
             public void onResponse(Call<TourResponse> call, final Response<TourResponse> response) {
                 if (response.isSuccessful()) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     finish();
                 } else {
                     Toast.makeText(MakingTour.this, "Making Tours Error", Toast.LENGTH_SHORT).show();
