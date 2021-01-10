@@ -23,6 +23,8 @@
             android:layout_marginStart="20dp"/>
 
         <TextView
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:id="@+id/tour_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

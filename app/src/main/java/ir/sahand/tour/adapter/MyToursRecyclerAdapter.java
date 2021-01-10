@@ -50,11 +50,11 @@ public class MyToursRecyclerAdapter extends RecyclerView.Adapter<MyToursRecycler
         );
         holder.tour_cost.setText(Utils.formatMoney(tourModelList.get(position).getTour_cost())
         );
-        holder.tour_reserved_date.setText(Utils.convertTimestampToHumanReadableString(tourModelList.get(position).getReserved_date()) +" "+"این تور را رزرو کرده اید.");
+        holder.tour_reserved_date.setText(Utils.convertTimestampToHumanReadableString(tourModelList.get(position).getReserved_date()) + " " + "این تور را رزرو کرده اید.");
         holder.tour_date.setText(Utils.convertTimestampToHumanReadableString(tourModelList.get(position).getTour_date())
         );
-        holder.tour_reserved_number.setText(tourModelList.get(position).getTour_number()+" نفر رزرو کرده‌");
-        if (tour.getImages().length > 0){
+        holder.tour_reserved_number.setText(tourModelList.get(position).getTour_number() + " نفر رزرو کرده‌");
+        if (tour.getImages().length > 0) {
             Glide
                     .with(mContext)
                     .load(tour.getImages()[0])

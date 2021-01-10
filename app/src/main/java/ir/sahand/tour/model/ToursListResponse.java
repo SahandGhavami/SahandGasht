@@ -2,15 +2,18 @@ package ir.sahand.tour.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class TourResponse {
+import java.util.List;
+
+public class ToursListResponse {
+
     @SerializedName("error")
     private boolean error;
 
     @SerializedName("message")
     private String message;
 
-    @SerializedName("tour")
-    private TourModel tour;
+    @SerializedName("tours")
+    private List<ParentItem> parentItems;
 
     public boolean isError() {
         return error;
@@ -20,8 +23,11 @@ public class TourResponse {
         return message;
     }
 
-    public TourModel getTour() {
-        return tour;
+    public List<ParentItem> getParentItems() {
+        return parentItems;
+    }
+
+    public void setParentItems(List<ParentItem> parentItems) {
+        this.parentItems = parentItems;
     }
 }
-

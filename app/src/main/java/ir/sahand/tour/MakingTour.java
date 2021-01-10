@@ -1,12 +1,12 @@
 package ir.sahand.tour;
 
+import android.Manifest;
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -15,15 +15,28 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.alirezaafkar.sundatepicker.DatePicker;
 import com.alirezaafkar.sundatepicker.interfaces.DateSetListener;
+
+//import org.apache.commons.io.IOUtils;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
 import ir.sahand.tour.model.TourResponse;
 import ir.sahand.tour.webService.APIClient;
 import ir.sahand.tour.webService.APIInterface;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,6 +62,7 @@ public class MakingTour extends AppCompatActivity implements DateSetListener {
     private ImageView[] IMG = {img1, img2, img3, img4, img5, img6};
     private String selected_date;
     private String selected_return_date;
+    private ArrayList<Uri> tourImages = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,20 +184,45 @@ public class MakingTour extends AppCompatActivity implements DateSetListener {
                 }
             }
         });
+
+        requestPermission();
     }
 
     private void passDataToBackEnd(String name, String location, String number, String selected_date, String selected_return_date, String cost, String details, String description) {
+        MultipartBody.Part[] imageParts = new MultipartBody.Part[tourImages.size()];
+        for (int i = 0; i < tourImages.size(); i++) {
+//            try {
+//                InputStream is = getContentResolver().openInputStream(tourImages.get(i));
+//                byte[] bytes = new byte[0];
+//                IOUtils.readFully(is, bytes);
+//                RequestBody imageBody = RequestBody.create(MediaType.parse("image/*"), bytes);
+//                imageParts[i] = MultipartBody.Part.createFormData("tour_image", "somename", imageBody);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+        }
+
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
-        Call<TourResponse> call = apiInterface.createTour(name, location, number, selected_date, selected_return_date, cost, details, description);
+        Call<TourResponse> call = apiInterface.createTour(
+                RequestBody.create(MultipartBody.FORM, name),
+                RequestBody.create(MultipartBody.FORM, location),
+                RequestBody.create(MultipartBody.FORM, number),
+                RequestBody.create(MultipartBody.FORM, selected_date),
+                RequestBody.create(MultipartBody.FORM, selected_return_date),
+                RequestBody.create(MultipartBody.FORM, cost),
+                RequestBody.create(MultipartBody.FORM, details),
+                RequestBody.create(MultipartBody.FORM, description),
+                imageParts
+        );
         call.enqueue(new Callback<TourResponse>() {
             @Override
             public void onResponse(Call<TourResponse> call, final Response<TourResponse> response) {
                 if (response.isSuccessful()) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                    if (response.body().isError()) {
+                        Toast.makeText(MakingTour.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        return;
                     }
+
                     finish();
                 } else {
                     Toast.makeText(MakingTour.this, "Making Tours Error", Toast.LENGTH_SHORT).show();
@@ -202,8 +241,9 @@ public class MakingTour extends AppCompatActivity implements DateSetListener {
 
     public void getImage() {
         Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.setType("Image/*");
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setType("image/*");
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivityForResult(intent, REQUEST_CODE_CONTENT);
     }
 
@@ -211,39 +251,14 @@ public class MakingTour extends AppCompatActivity implements DateSetListener {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE_CONTENT) {
             if (resultCode == RESULT_OK) {
-                imageUri = data.getData();
+                tourImages.add(data.getData());
                 try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-                    /*switch () {
-                        case R.id.making_tour_activity_image1 :
-                            img1.setImageBitmap(bitmap);
-                            break;
-                        case R.id.making_tour_activity_image2 :
-                            img2.setImageBitmap(bitmap);
-                            break;
-                        case R.id.making_tour_activity_image3 :
-                            img3.setImageBitmap(bitmap);
-                            break;
-                        case R.id.making_tour_activity_image4 :
-                            img4.setImageBitmap(bitmap);
-                            break;
-                        case R.id.making_tour_activity_image5:
-                            img5.setImageBitmap(bitmap);
-                            break;
-                        case R.id.making_tour_activity_image6 :
-                            img6.setImageBitmap(bitmap);
-                            break;
-                    }*/
-
-                    /*for (int i = 0; i < 6; i++) {
-                        if (IMG[i] == null) {
-                            IMG[i].setImageBitmap(bitmap);
-                        } else {
-                            IMG[i + 1].setImageBitmap(bitmap);
-                        }
-                    }*/
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    for (int i = 0; i < 6; i++) {
+                        if (i >= tourImages.size()) break;
+                        IMG[i].setImageURI(tourImages.get(i));
+                    }
+                } catch (Exception e) {
+                    Log.e("E/IMAGE", e.getStackTrace().toString());
                 }
             }
         }
@@ -281,5 +296,17 @@ public class MakingTour extends AppCompatActivity implements DateSetListener {
 //            mEndDate.setDate(day, month, year);
 //            tour_date.setText(mEndDate.getDate());
 //        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == 201 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        }
+    }
+
+    private void requestPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 201);
+        }
     }
 }

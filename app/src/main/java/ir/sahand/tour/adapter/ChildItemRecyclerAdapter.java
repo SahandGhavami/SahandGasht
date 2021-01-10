@@ -20,27 +20,31 @@ import ir.sahand.tour.Utils;
 import ir.sahand.tour.model.TourModel;
 import ir.sahand.tour.TourPage;
 
-public class MainPageRecyclerAdapter extends RecyclerView.Adapter<MainPageRecyclerAdapter.MyViewHolder> {
+public class ChildItemRecyclerAdapter extends RecyclerView.Adapter<ChildItemRecyclerAdapter.MyViewHolder> {
     Context mContext;
     List<TourModel> tourModelList;
 
-    public MainPageRecyclerAdapter(Context mContext, List<TourModel> tours) {
+    public ChildItemRecyclerAdapter(Context mContext, List<TourModel> tours) {
         this.mContext = mContext;
         this.tourModelList = tours;
+    }
+
+    public ChildItemRecyclerAdapter(List<TourModel> tourModelList) {
+        this.tourModelList = tourModelList;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
-        v = LayoutInflater.from(mContext).inflate(R.layout.recycleview_card ,parent ,false);
+        v = LayoutInflater.from(mContext).inflate(R.layout.recycleview_card, parent, false);
         MyViewHolder vHolder = new MyViewHolder(v);
 
         return vHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder,final int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         TourModel tour = tourModelList.get(position);
 
         holder.tour_name.setText(tourModelList.get(position).getTour_name());
@@ -53,10 +57,10 @@ public class MainPageRecyclerAdapter extends RecyclerView.Adapter<MainPageRecycl
         holder.tour_return_date.setText(
                 Utils.convertTimestampToHumanReadableString(tourModelList.get(position).getTour_return_date())
         );
-        holder.tour_number.setText(tourModelList.get(position).getTour_number()+" نفر");
+        holder.tour_number.setText(tourModelList.get(position).getTour_number() + " نفر");
         //String photo_url = tourDetailsList.get(position).getTour_photo();
 
-        if (tour.getImages().length > 0){
+        if (tour.getImages().length > 0) {
             Glide
                     .with(mContext)
                     .load(tour.getImages()[0])
@@ -68,15 +72,15 @@ public class MainPageRecyclerAdapter extends RecyclerView.Adapter<MainPageRecycl
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, TourPage.class);
-                intent.putExtra("Tour_id" , tourModelList.get(position).getId());
-                intent.putExtra("Tour_name" , tourModelList.get(position).getTour_name());
-                intent.putExtra("Tour_cost" , tourModelList.get(position).getTour_cost());
-                intent.putExtra("Tour_date" , tourModelList.get(position).getTour_date());
-                intent.putExtra("Tour_Photo" , tourModelList.get(position).getImages());
-                intent.putExtra("Tour_Reserved_Number" , tourModelList.get(position).getTour_reserved_number());
-                intent.putExtra("Tour_description" ,  tourModelList.get(position).getTour_description());
-                intent.putExtra("Tour_details" , tourModelList.get(position).getTour_details());
-                intent.putExtra("Tour_location" , tourModelList.get(position).getTour_location());
+                intent.putExtra("Tour_id", tourModelList.get(position).getId());
+                intent.putExtra("Tour_name", tourModelList.get(position).getTour_name());
+                intent.putExtra("Tour_cost", tourModelList.get(position).getTour_cost());
+                intent.putExtra("Tour_date", tourModelList.get(position).getTour_date());
+                intent.putExtra("Tour_Photo", tourModelList.get(position).getImages());
+                intent.putExtra("Tour_Reserved_Number", tourModelList.get(position).getTour_reserved_number());
+                intent.putExtra("Tour_description", tourModelList.get(position).getTour_description());
+                intent.putExtra("Tour_details", tourModelList.get(position).getTour_details());
+                intent.putExtra("Tour_location", tourModelList.get(position).getTour_location());
                 mContext.startActivity(intent);
             }
         });
@@ -96,15 +100,16 @@ public class MainPageRecyclerAdapter extends RecyclerView.Adapter<MainPageRecycl
         private TextView tour_return_date;
         private TextView tour_number;
         private ImageView tour_img;
-            public MyViewHolder(View itemView) {
-                super(itemView);
-                cardView = (CardView) itemView.findViewById(R.id.cardview);
-                tour_name = (TextView) itemView.findViewById(R.id.tour_name_cardview);
-                tour_cost = (TextView) itemView.findViewById(R.id.cost_tour_cardview);
-                tour_date = (TextView) itemView.findViewById(R.id.date_tour_cardview);
-                tour_return_date = (TextView) itemView.findViewById(R.id.return_date_tour_cardview);
-                tour_number = (TextView) itemView.findViewById(R.id.number_tour_cardview);
-                tour_img = (ImageView) itemView.findViewById(R.id.tour_image_cardview);
-            }
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            cardView = (CardView) itemView.findViewById(R.id.cardview);
+            tour_name = (TextView) itemView.findViewById(R.id.tour_name_cardview);
+            tour_cost = (TextView) itemView.findViewById(R.id.cost_tour_cardview);
+            tour_date = (TextView) itemView.findViewById(R.id.date_tour_cardview);
+            tour_return_date = (TextView) itemView.findViewById(R.id.return_date_tour_cardview);
+            tour_number = (TextView) itemView.findViewById(R.id.number_tour_cardview);
+            tour_img = (ImageView) itemView.findViewById(R.id.tour_image_cardview);
+        }
     }
 }

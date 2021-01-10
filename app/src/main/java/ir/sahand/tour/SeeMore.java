@@ -11,9 +11,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+
 import ir.sahand.tour.adapter.SeeMoreRecyclerAdapter;
 import ir.sahand.tour.model.TourModel;
 import ir.sahand.tour.model.ToursResponse;
@@ -38,15 +40,15 @@ public class SeeMore extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seemore);
         //InputStream inputStream = getResources().openRawResource(R.raw.one_day_tour);
-        toursRequest("");
-        tour_numbers = (TextView) findViewById (R.id.see_more_tour_size);
+        //toursRequest("");
+        tour_numbers = (TextView) findViewById(R.id.see_more_tour_size);
         tour_category = (TextView) findViewById(R.id.tour_category);
         Bundle bundle = getIntent().getExtras();
         String tour_category_text = bundle.getString("Tour_category");
         String initialQuery = bundle.getString("query");
         tour_category.setText(tour_category_text);
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) findViewById (R.id.searchview);
+        SearchView searchView = (SearchView) findViewById(R.id.searchview);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -73,12 +75,11 @@ public class SeeMore extends AppCompatActivity {
 
         if (initialQuery != null && initialQuery.length() > 0) {
             searchView.setQuery(initialQuery, true);
-            tour_category.setText("نتایج جست و جو " );
             toursSearch(initialQuery);
         }
     }
 
-    private void toursSearch(String key) {
+    private void toursSearch(final String key) {
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
         Call<ToursResponse> call = apiInterface.getToursByName(key);
         call.enqueue(new Callback<ToursResponse>() {
@@ -86,6 +87,8 @@ public class SeeMore extends AppCompatActivity {
             public void onResponse(Call<ToursResponse> call, Response<ToursResponse> response) {
                 if (response.isSuccessful()) {
                     List<TourModel> tours = response.body().getTours();
+                    int size = tours.size();
+                    tour_numbers.setText(size + " تور به شما پیشنهاد داده شده است.");
                     recyclerSetting(tours);
                 }
             }
@@ -107,8 +110,8 @@ public class SeeMore extends AppCompatActivity {
             public void onResponse(Call<ToursResponse> call, Response<ToursResponse> response) {
                 if (response.isSuccessful()) {
                     List<TourModel> tours = response.body().getTours();
-                    int size= tours.size();
-                    tour_numbers.setText( size+"تور به شما پیشنهاد داده شده است.");
+                    int size = tours.size();
+                    tour_numbers.setText(size + " تور به شما پیشنهاد داده شده است.");
                     recyclerSetting(tours);
                 }
             }
@@ -123,7 +126,7 @@ public class SeeMore extends AppCompatActivity {
     }
 
     protected void recyclerSetting(List<TourModel> tours) {
-        Collections.sort(tours,TourModel.date);
+        Collections.sort(tours, TourModel.date);
         adapter = new SeeMoreRecyclerAdapter(this, tours);
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);

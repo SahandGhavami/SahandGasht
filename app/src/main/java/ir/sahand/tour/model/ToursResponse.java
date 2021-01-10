@@ -8,6 +8,20 @@ public class ToursResponse {
     @SerializedName("tours")
     private List<TourModel> tours;
 
+    @SerializedName("error")
+    private boolean error;
+
+    @SerializedName("message")
+    private String message;
+
+    public boolean isError() {
+        return error;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
     public List<TourModel> getTours() {
         return tours;
     }
