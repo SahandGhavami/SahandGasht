@@ -19,17 +19,13 @@ import android.widget.Toast;
 import com.alirezaafkar.sundatepicker.DatePicker;
 import com.alirezaafkar.sundatepicker.interfaces.DateSetListener;
 
-//import org.apache.commons.io.IOUtils;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 import ir.sahand.tour.model.TourResponse;
 import ir.sahand.tour.webService.APIClient;
@@ -173,13 +169,14 @@ public class MakingTour extends AppCompatActivity implements DateSetListener {
                 } else if (details.length() == 0) {
                     tour_details.requestFocus();
                     tour_details.setError("جزئیات تور نمیتواند خالی باشد !");
-                } else if (selected_date.length() == 0) {
+                } else if (3 < 2 && selected_date.length() == 0) {
                     tour_date.requestFocus();
                     tour_date.setError("ظرفیت تور نمیتواند خالی باشد !");
-                } else if (selected_return_date.length() == 0) {
+                } else if (3 < 2 && selected_return_date.length() == 0) {
                     tour_return_date.requestFocus();
                     tour_return_date.setError("ظرفیت تور نمیتواند خالی باشد !");
                 } else {
+//                    passDataToBackEnd(name, location, number, selected_date, selected_return_date, cost, details, description);
                     passDataToBackEnd(name, location, number, selected_date, selected_return_date, cost, details, description);
                 }
             }
@@ -189,31 +186,45 @@ public class MakingTour extends AppCompatActivity implements DateSetListener {
     }
 
     private void passDataToBackEnd(String name, String location, String number, String selected_date, String selected_return_date, String cost, String details, String description) {
+        MultipartBody.Builder builder = new MultipartBody.Builder();
+        builder.setType(MultipartBody.FORM);
+
+        builder.addFormDataPart("name", name);
+        builder.addFormDataPart("location", location);
+        builder.addFormDataPart("capacity", number);
+        builder.addFormDataPart("cost", cost);
+        builder.addFormDataPart("details", details);
+        builder.addFormDataPart("description", description);
+        builder.addFormDataPart("date", selected_date);
+        builder.addFormDataPart("return_date", selected_return_date);
+        //builder.addFormDataPart("capacity", "4222");
+
         MultipartBody.Part[] imageParts = new MultipartBody.Part[tourImages.size()];
         for (int i = 0; i < tourImages.size(); i++) {
-//            try {
-//                InputStream is = getContentResolver().openInputStream(tourImages.get(i));
-//                byte[] bytes = new byte[0];
-//                IOUtils.readFully(is, bytes);
-//                RequestBody imageBody = RequestBody.create(MediaType.parse("image/*"), bytes);
-//                imageParts[i] = MultipartBody.Part.createFormData("tour_image", "somename", imageBody);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
+            try {
+                InputStream is = getContentResolver().openInputStream(tourImages.get(i));
+
+                byte[] bytes = new byte[is.available()];
+                while (is.read(bytes) != -1) ;
+
+                byte[] array = new byte[7]; // length is bounded by 7
+                builder.addFormDataPart(
+                        "tour_image[]",
+                        (new Random().nextInt()) + ".jpg",
+                        RequestBody.create(
+                                MediaType.parse("multipart/form-data"),
+                                bytes
+                        )
+                );
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
-        Call<TourResponse> call = apiInterface.createTour(
-                RequestBody.create(MultipartBody.FORM, name),
-                RequestBody.create(MultipartBody.FORM, location),
-                RequestBody.create(MultipartBody.FORM, number),
-                RequestBody.create(MultipartBody.FORM, selected_date),
-                RequestBody.create(MultipartBody.FORM, selected_return_date),
-                RequestBody.create(MultipartBody.FORM, cost),
-                RequestBody.create(MultipartBody.FORM, details),
-                RequestBody.create(MultipartBody.FORM, description),
-                imageParts
-        );
+
+        Call<TourResponse> call = apiInterface.createTour(builder.build());
+
         call.enqueue(new Callback<TourResponse>() {
             @Override
             public void onResponse(Call<TourResponse> call, final Response<TourResponse> response) {
@@ -241,7 +252,7 @@ public class MakingTour extends AppCompatActivity implements DateSetListener {
 
     public void getImage() {
         Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);
+        intent.setAction(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivityForResult(intent, REQUEST_CODE_CONTENT);

@@ -1,5 +1,6 @@
 package ir.sahand.tour.adapter;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -33,6 +34,8 @@ public class ParentItemRecyclerAdapter extends RecyclerView.Adapter<ParentItemRe
     public void onBindViewHolder(@NonNull ParentItemRecyclerAdapter.ParentViewHolder holder, int position) {
         ParentItem parentItem = itemList.get(position);
         holder.parentItemTitle.setText(parentItem.getList_title());
+        holder.relativeLayout.setBackgroundColor(Color.parseColor(parentItem.getBackground_color()));
+
         //holder.relativeLayout.setBackgroundColor();
         LinearLayoutManager layoutManager = new LinearLayoutManager(holder.childRecyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false);
         layoutManager.setInitialPrefetchItemCount(parentItem.getTourModelList().size());

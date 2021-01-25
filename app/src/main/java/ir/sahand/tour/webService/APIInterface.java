@@ -11,6 +11,7 @@ import ir.sahand.tour.model.UsersResponse;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -56,7 +57,7 @@ public interface APIInterface {
     @FormUrlEncoded
     Call<TourResponse> createTour(@Field("name") String name, @Field("location") String location, @Field("capacity") String number, @Field("date") String date, @Field("return_date") String return_date, @Field("cost") String cost, @Field("details") String details, @Field("description") String description);
 */
-    @POST("v1/Api.php?apicall=createtour")
+    /*@POST("v1/Api.php?apicall=createtour")
     @Multipart
     Call<TourResponse> createTour(
             @Part("name") RequestBody name,
@@ -68,7 +69,9 @@ public interface APIInterface {
             @Part("details") RequestBody details,
             @Part("description") RequestBody description,
             @Part MultipartBody.Part[] tourImages
-    );
+    );*/
+    @POST("v1/Api.php?apicall=createtour")
+    Call<TourResponse> createTour(@Body RequestBody body);
 
     @POST("v1/Api.php?apicall=login")
     @FormUrlEncoded

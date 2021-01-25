@@ -3,12 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:orientation="vertical">
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/darkGreen" />
+    android:orientation="vertical"
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/my_reserved_tourss"
@@ -16,15 +12,10 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/iransans_fanum_bold"
         android:gravity="center"
+        android:layout_marginVertical="4dp"
         android:text="تورهای رزرو شده من"
         android:textColor="@color/darkGreen"
         android:textSize="20sp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_margin="4dp"
-        android:background="@color/darkGreen" />
 
     <TextView
         android:id="@+id/making_tours"
@@ -33,14 +24,9 @@
         android:fontFamily="@font/iransans_fanum_bold"
         android:gravity="center"
         android:text="ساخت تور"
+        android:layout_marginVertical="4dp"
         android:textColor="@color/darkGreen"
         android:textSize="20sp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_margin="4dp"
-        android:background="@color/darkGreen" />
 
     <TextView
         android:id="@+id/my_created_tours"
@@ -49,14 +35,9 @@
         android:fontFamily="@font/iransans_fanum_bold"
         android:gravity="center"
         android:text="تورهای من"
+        android:layout_marginVertical="4dp"
         android:textColor="@color/darkGreen"
         android:textSize="20sp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_margin="4dp"
-        android:background="@color/darkGreen" />
 
     <TextView
         android:id="@+id/exit"
@@ -65,11 +46,8 @@
         android:fontFamily="@font/iransans_fanum_bold"
         android:gravity="center"
         android:text="خروج"
+        android:layout_marginVertical="4dp"
         android:textColor="@color/darkGreen"
         android:textSize="20sp" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/darkGreen" />
 </LinearLayout>

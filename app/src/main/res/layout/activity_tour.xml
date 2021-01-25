@@ -29,6 +29,7 @@
             android:layout_marginTop="232dp"
             android:background="@drawable/layout_style"
             android:layout_width="match_parent"
+            android:paddingBottom="8dp"
             android:layout_height="match_parent">
 
             <TextView
@@ -134,7 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="vertical"
-                android:text="@string/tour_details"
+                android:hint="@string/tour_details"
                 android:fontFamily="@font/iransansweb_fanum_medium"
                 android:textSize="15sp"
                 android:textColor="@color/darkGreen"
@@ -162,7 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:fontFamily="@font/iransansweb_fanum_medium"
-                android:text="این تور در راس ساعت مقرر به حرکت در میاید"
+                android:hint="این تور در راس ساعت مقرر به حرکت در میاید"
                 android:textSize="15sp"
                 android:textColor="@color/darkGreen"
                 android:layout_below="@+id/tour_activity_description_title"
