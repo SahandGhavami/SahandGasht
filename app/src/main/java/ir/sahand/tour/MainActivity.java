@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import ir.sahand.tour.adapter.ChildItemRecyclerAdapter;
@@ -195,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void recyclerSetting(List<ParentItem> list) {
-        //Collections.sort(list, TourModel.date);
+        //Collections.sort(list, ParentItem.date);
         RecyclerView ParentRecyclerView = (RecyclerView) findViewById(R.id.parent_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
         ParentItemRecyclerAdapter parentItemRecyclerAdapter = new ParentItemRecyclerAdapter(list);
@@ -221,13 +222,12 @@ public class MainActivity extends AppCompatActivity {
         myList3.setAdapter(adapter);*/
     }
 
-    @Override
+   /*@Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.layout.options_menu, menu);
-    }
-
+        menuInflater.inflate(2R.layout.options_menu, menu);
+    }*/
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {

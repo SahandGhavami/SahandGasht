@@ -30,6 +30,7 @@ public class TourPage extends AppCompatActivity {
     private TextView tv_cost;
     private TextView tv_number;
     private TextView tv_details;
+    private TextView tv_description;
     private TextView tv_location;
     private ImageView back_btn;
     private Button submit;
@@ -58,6 +59,7 @@ public class TourPage extends AppCompatActivity {
         //image = (ImageView) findViewById(R.id.tour_activity_image);
         tv_number = (TextView) findViewById(R.id.tour_activity_number);
         tv_details = (TextView) findViewById(R.id.tour_activity_details);
+        tv_description = (TextView) findViewById(R.id.tour_activity_description);
         tv_location = (TextView) findViewById(R.id.tour_activity_location);
 
         Bundle bundle = getIntent().getExtras();
@@ -98,8 +100,10 @@ public class TourPage extends AppCompatActivity {
 
         tv_name.setText(tour.getTour_name());
         tv_cost.setText(Utils.formatMoney(tour.getTour_cost()));
-        tv_details.setText(tour.getTour_description());
+        tv_details.setText(tour.getTour_details());
         tv_details.setMovementMethod(new ScrollingMovementMethod());
+        tv_description.setText(tour.getTour_description());
+        tv_description.setMovementMethod(new ScrollingMovementMethod());
         tv_date.setText(Utils.convertTimestampToHumanReadableString(tour.getTour_date()));
         tv_number.setText("ظرفیت باقی مانده :" + tour.getRemaining_capacity() + " نفر");
         tv_location.setText(tour.getTour_location());

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/making_tour_activity_image1"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_alignParentStart="true"
+        android:layout_margin="8dp"
+        android:background="@drawable/add_image"
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:id="@+id/making_tour_activity_image2"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp"
+        android:background="@drawable/add_image"
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:id="@+id/making_tour_activity_image3"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="8dp"
+        android:background="@drawable/add_image"
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:id="@+id/making_tour_activity_image4"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_below="@id/making_tour_activity_image1"
+        android:layout_alignParentStart="true"
+        android:layout_margin="8dp"
+        android:background="@drawable/add_image"
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:id="@+id/making_tour_activity_image5"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_below="@id/making_tour_activity_image2"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp"
+        android:background="@drawable/add_image"
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:id="@+id/making_tour_activity_image6"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_below="@id/making_tour_activity_image3"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="8dp"
+        android:background="@drawable/add_image"
+        android:scaleType="fitXY" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="260dp"
+        android:background="@drawable/layout_style">
+
+        <EditText
+            android:id="@+id/making_tour_activity_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/iransans_fanum_bold"
+            android:hint=" تور یک روزه ماسال"
+            android:textColor="@color/darkGreen"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/making_tour_activity_location"
+            android:layout_width="150dp"
+            android:layout_height="27dp"
+            android:layout_below="@id/making_tour_activity_name"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/textview_style"
+            android:drawableRight="@drawable/location"
+            android:fontFamily="@font/iransansweb_fanum_medium"
+            android:gravity="center|bottom"
+            android:hint="موقعیت مکانی"
+            android:textColor="@color/darkGreen"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/making_tour_activity_number"
+            android:layout_width="150dp"
+            android:layout_height="27dp"
+            android:layout_below="@id/making_tour_activity_name"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/textview_style_dark"
+            android:fontFamily="@font/iransansweb_fanum_medium"
+            android:gravity="center|bottom"
+            android:hint="ظرفیت تور"
+            android:textColor="@color/white"
+            android:inputType="numberDecimal"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/making_tour_activity_cost"
+            android:layout_width="150dp"
+            android:layout_height="27dp"
+            android:layout_below="@id/making_tour_activity_location"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/textview_style"
+            android:drawableRight="@drawable/money"
+            android:fontFamily="@font/iransansweb_fanum_medium"
+            android:gravity="center|bottom"
+            android:inputType="numberDecimal"
+            android:hint="قیمت تور"
+            android:textColor="@color/darkGreen"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/making_tour_activity_date"
+            android:layout_width="150dp"
+            android:layout_height="27dp"
+            android:layout_below="@id/making_tour_activity_number"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/textview_style"
+            android:drawableRight="@drawable/date"
+            android:fontFamily="@font/iransansweb_fanum_medium"
+            android:gravity="center|bottom"
+            android:hint="تاریخ تور"
+            android:textColor="@color/darkGreen"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/making_tour_activity_return_date"
+            android:layout_width="150dp"
+            android:layout_height="27dp"
+            android:layout_below="@id/making_tour_activity_date"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/textview_style"
+            android:drawableRight="@drawable/date"
+            android:fontFamily="@font/iransansweb_fanum_medium"
+            android:gravity="center|bottom"
+            android:hint="تاریخ برگشت تور"
+            android:textColor="@color/darkGreen"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/making_tour_activity_details_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/making_tour_activity_cost"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/iransansweb_fanum_medium"
+            android:text="@string/tour_details"
+            android:textColor="@color/darkGreen"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/making_tour_activity_details"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/making_tour_activity_details_title"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/iransansweb_fanum_medium"
+            android:hint="جزئیات تور"
+            android:lines="10"
+            android:paddingEnd="10dp"
+            android:scrollbars="vertical"
+            android:textColor="@color/darkGreen"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/making_tour_activity_description_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/making_tour_activity_details"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/iransansweb_fanum_medium"
+            android:text="مشخصات حرکت"
+            android:textColor="@color/darkGreen"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/making_tour_activity_description"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/making_tour_activity_description_title"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/iransansweb_fanum_medium"
+            android:hint="مشخصات حرکت"
+            android:lines="10"
+            android:paddingEnd="10dp"
+            android:scrollbars="vertical"
+            android:textColor="@color/darkGreen"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/making_tour_activity_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/making_tour_activity_description"
+            android:layout_margin="15dp"
+            android:background="@drawable/reserve_button_style"
+            android:fontFamily="@font/iransans_fanum_bold"
+            android:text="@string/making_tour"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
+</ScrollView>

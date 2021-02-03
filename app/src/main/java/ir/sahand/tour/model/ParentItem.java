@@ -1,7 +1,10 @@
 package ir.sahand.tour.model;
 
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class ParentItem {
@@ -47,4 +50,5 @@ public class ParentItem {
     public void setTourModelList(List<TourModel> tourModelList) {
         this.tourModelList = tourModelList;
     }
+
 }
