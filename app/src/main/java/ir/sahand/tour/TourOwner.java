@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -24,11 +26,21 @@ import retrofit2.Response;
 public class TourOwner extends AppCompatActivity {
     private TourOwnerRecyclerAdapter adapter;
     private List<TourModel> tours;
+    private ImageView back_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tour_owner);
+
+        /*back_btn = (ImageView) findViewById (R.id.activity_tour_owner_back_button);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });*/
+
         toursRequest();
     }
 

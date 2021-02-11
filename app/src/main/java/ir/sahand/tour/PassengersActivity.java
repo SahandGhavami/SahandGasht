@@ -33,8 +33,8 @@ public class PassengersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passengers);
-        reserved_count = (TextView) findViewById (R.id.passengers_reserved_size);
-        back_button = (ImageView) findViewById (R.id.back_button_passengers);
+        reserved_count = (TextView) findViewById(R.id.passengers_reserved_size);
+        back_button = (ImageView) findViewById(R.id.back_button_passengers);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,9 +45,7 @@ public class PassengersActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         id = bundle.getInt("Tour_id");
 
-
-
-       myPassengersRequest(id);
+        myPassengersRequest(id);
     }
 
     private void myPassengersRequest(int id) {
@@ -66,7 +64,7 @@ public class PassengersActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<UsersResponse> call, Throwable t) {
                 if (t instanceof IOException) {
-                    Log.d("user error" , t.getLocalizedMessage());
+                    Log.d("user error", t.getLocalizedMessage());
                     Toast.makeText(PassengersActivity.this, "My Passengers Error", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -77,7 +75,7 @@ public class PassengersActivity extends AppCompatActivity {
         adapter = new PassengersRecyclerAdapter(this, users);
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        RecyclerView myList = (RecyclerView) findViewById (R.id.passengers_recycler);
+        RecyclerView myList = (RecyclerView) findViewById(R.id.passengers_recycler);
         myList.setLayoutManager(layoutManager);
         myList.setAdapter(adapter);
     }

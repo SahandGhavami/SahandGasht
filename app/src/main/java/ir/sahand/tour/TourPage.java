@@ -94,8 +94,8 @@ public class TourPage extends AppCompatActivity {
     }
 
     void refreshViews() {
-        ViewPager viewPager = (ViewPager) findViewById (R.id.tour_activity_viewpager);
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this , tour.getImages());
+        ViewPager viewPager = (ViewPager) findViewById(R.id.tour_activity_viewpager);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this, tour.getImages());
         viewPager.setAdapter(viewPagerAdapter);
 
         tv_name.setText(tour.getTour_name());

@@ -53,7 +53,7 @@ public class MyToursRecyclerAdapter extends RecyclerView.Adapter<MyToursRecycler
         holder.tour_reserved_date.setText(Utils.convertTimestampToHumanReadableString(tourModelList.get(position).getReserved_date()) + " " + "این تور را رزرو کرده اید.");
         holder.tour_date.setText(Utils.convertTimestampToHumanReadableString(tourModelList.get(position).getTour_date())
         );
-        holder.tour_reserved_number.setText(tourModelList.get(position).getTour_number() + " نفر رزرو کرده‌");
+
         if (tour.getImages().length > 0) {
             Glide
                     .with(mContext)
@@ -92,7 +92,7 @@ public class MyToursRecyclerAdapter extends RecyclerView.Adapter<MyToursRecycler
             tour_name = (TextView) itemView.findViewById(R.id.my_tours_title);
             tour_cost = (TextView) itemView.findViewById(R.id.my_tours_cost);
             tour_date = (TextView) itemView.findViewById(R.id.my_tours_date);
-            tour_reserved_number = (TextView) itemView.findViewById(R.id.my_tours_people);
+            //tour_reserved_number = (TextView) itemView.findViewById(R.id.my_tours_people);
             tour_reserved_date = (TextView) itemView.findViewById(R.id.my_tours_reserved_date);
             tour_img = (ImageView) itemView.findViewById(R.id.my_tours_image);
             //tour_location=(TextView) itemView.findViewById(R.id.tour_activity_location);

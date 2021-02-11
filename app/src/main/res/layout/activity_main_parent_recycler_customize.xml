@@ -3,7 +3,8 @@
     android:id="@+id/parent_relative_layout"
     android:layout_width="match_parent"
     android:layout_height="400dp"
-    android:layoutDirection="rtl">
+    android:layoutDirection="rtl"
+    >
 
     <ImageView
         android:id="@+id/special_tour_image"
@@ -18,12 +19,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_margin="14dp"
+        android:layout_margin="20dp"
         android:fontFamily="@font/iransans_fanum_bold"
         android:gravity="center"
         android:text="تایتل لیست"
         android:textColor="@color/darkGreen"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
 
     <android.support.v7.widget.RecyclerView
         android:paddingEnd="4dp"

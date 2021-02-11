@@ -176,7 +176,6 @@ public class MakingTour extends AppCompatActivity implements DateSetListener {
                     tour_return_date.requestFocus();
                     tour_return_date.setError("ظرفیت تور نمیتواند خالی باشد !");
                 } else {
-//                    passDataToBackEnd(name, location, number, selected_date, selected_return_date, cost, details, description);
                     passDataToBackEnd(name, location, number, selected_date, selected_return_date, cost, details, description);
                 }
             }

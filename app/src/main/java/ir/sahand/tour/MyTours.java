@@ -52,7 +52,7 @@ public class MyTours extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     List<TourModel> tours = response.body().getTours();
                     int size = tours.size();
-                    tour_size.setText(  " شما " + size + " رزرو کرده اید.");
+                    tour_size.setText(  " شما " + size + "تور رزرو کرده اید.");
                     recyclerSetting(tours);
                 }
             }

@@ -222,34 +222,28 @@ public class MainActivity extends AppCompatActivity {
         myList3.setAdapter(adapter);*/
     }
 
-   /*@Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(2R.layout.options_menu, menu);
-    }*/
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.my_reserved_tours:
-                Intent intent = new Intent(getApplicationContext(), MyTours.class);
-                startActivity(intent);
-                break;
-            case R.id.my_tours:
-                Intent intent2 = new Intent(getApplicationContext(), TourOwner.class);
-                startActivity(intent2);
-                break;
-            case R.id.make_tours:
-                Intent intent3 = new Intent(getApplicationContext(), MakingTour.class);
-                startActivity(intent3);
-                break;
-            case R.id.logout:
-                AppPreferenceTools.getInstance(getApplicationContext()).removeAllPrefs();
-                finish();
-                break;
-            default:
-                break;
-        }
-        return super.onContextItemSelected(item);
-    }
+//    @Override
+//    public boolean onContextItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.my_reserved_tours:
+//                Intent intent = new Intent(getApplicationContext(), MyTours.class);
+//                startActivity(intent);
+//                break;
+//            case R.id.my_tours:
+//                Intent intent2 = new Intent(getApplicationContext(), TourOwner.class);
+//                startActivity(intent2);
+//                break;
+//            case R.id.make_tours:
+//                Intent intent3 = new Intent(getApplicationContext(), MakingTour.class);
+//                startActivity(intent3);
+//                break;
+//            case R.id.logout:
+//                AppPreferenceTools.getInstance(getApplicationContext()).removeAllPrefs();
+//                finish();
+//                break;
+//            default:
+//                break;
+//        }
+//        return super.onContextItemSelected(item);
+//    }
 }

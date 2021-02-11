@@ -55,7 +55,7 @@ public class SeeMoreRecyclerAdapter extends RecyclerView.Adapter<SeeMoreRecycler
         );
         holder.tour_return_date.setText(Utils.convertTimestampToHumanReadableString(tourModelList.get(position).getTour_return_date())
         );
-        holder.tour_reserved_number.setText(tourModelList.get(position).getTour_number() + " نفر رزرو کرده‌");
+        holder.tour_reserved_number.setText(tourModelList.get(position).getTour_number() + " نفر ظرفیت دارد.‌");
         //String photo_url = tourDetailsList.get(position).getTour_photo();
         if (tour.getImages().length > 0) {
             Glide
@@ -80,36 +80,6 @@ public class SeeMoreRecyclerAdapter extends RecyclerView.Adapter<SeeMoreRecycler
         return tourModelList == null ? 0 : tourModelList.size();
     }
 
-
-    /*public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence charSequence) {
-                String charString = charSequence.toString();
-                if (charString.isEmpty()) {
-                    tourModelListFiltered = tourModelList;
-                } else {
-                    List<TourModel> filteredList = new ArrayList<>();
-                    for (TourModel tour : tourModelList) {
-                        if (tour.getTour_name().toLowerCase().contains(charString.toLowerCase())) {
-                            filteredList.add(tour);
-                        }
-                    }
-                    tourModelListFiltered = tourModelList;
-                }
-
-                FilterResults filterResults = new FilterResults();
-                filterResults.values = tourModelListFiltered;
-                return filterResults;
-            }
-
-            @Override
-            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                tourModelListFiltered = (ArrayList<TourModel>) filterResults.values;
-                notifyDataSetChanged();
-            }
-        };
-    }*/
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private RelativeLayout relativeLayout;
